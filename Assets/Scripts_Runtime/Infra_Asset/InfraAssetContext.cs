@@ -8,7 +8,11 @@ namespace Act {
             entityDict = new Dictionary<string, GameObject>();
 
         }
-        public void UI_Add(GameObject gameObject) {
+        public void Entity_Add(string name, GameObject gameObject) {
+            entityDict.Add(name, gameObject);
+        }
+        public bool Entity_Tryget(string name, out GameObject value) {
+            return entityDict.TryGetValue(name, out value);
         }
     }
 }

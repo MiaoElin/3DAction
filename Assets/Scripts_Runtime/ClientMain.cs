@@ -14,11 +14,14 @@ namespace Act {
             ctx.Inject(panelCavas);
             BindEvent();
             Load();
+            ctx.inputEntity.Init();
             LoginBusiness.Enter(ctx.uICtx);
         }
 
         private void Load() {
             UIApp.LoadAll(ctx.uICtx);
+            InfraTemplate.LoadAll(ctx.tempCtx);
+            InfraAsset.LoadAll(ctx.infraCtx);
         }
 
         private void BindEvent() {
@@ -35,7 +38,9 @@ namespace Act {
 
         // Update is called once per frame
         void Update() {
-
+            ctx.inputEntity.Process();
+            float dt = Time.deltaTime;
+            GameBusiness.Tick(ctx.gameCtx, dt);
         }
     }
 }

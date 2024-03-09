@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Entities
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: Entities
   m_Data:
     m_SerializedData: []
-  m_GUID: 808249cd274ad0a4aaf00fd9571e79d1
+  m_GUID: 69b215cca4a75f747a2eb493f3b9c9ad
   m_SerializeEntries:
-  - m_GUID: 08c6c26af1b8ba9459e25864a4064849
-    m_Address: Assets/Resource_Runtime/RoleTM_100.asset
+  - m_GUID: e8fd7e9fa7ca0ba4eb2d3cec772ccf4f
+    m_Address: Role
     m_ReadOnly: 0
     m_SerializedLabels:
-    - RoleTM
+    - Entities
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: caf1cc206c16af04597d10f8bdd112f0, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 3f536eb530888b9469375c9625288683, type: 2}
-    - {fileID: 11400000, guid: 84473f6c2d8edb741b5ca54616adcc84, type: 2}
+    - {fileID: 11400000, guid: 6d39784e14e6d3d40a4debbfa747de1d, type: 2}
+    - {fileID: 11400000, guid: 41c5bbbfe26656746a63c312ac9238d7, type: 2}
