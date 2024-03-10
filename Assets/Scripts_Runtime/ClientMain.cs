@@ -11,7 +11,7 @@ namespace Act {
         // Start is called before the first frame update
         void Start() {
             ctx = new MainContext();
-            ctx.Inject(panelCavas);
+            ctx.Inject(panelCavas, mainCamera);
             BindEvent();
             Load();
             ctx.inputEntity.Init();

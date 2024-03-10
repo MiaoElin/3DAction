@@ -14,9 +14,9 @@ namespace Act {
             gameCtx = new GameContext();
             infraCtx = new InfraAssetContext();
         }
-        public void Inject(Canvas canvas) {
+        public void Inject(Canvas canvas, Camera camera) {
             uICtx.Inject(canvas);
-            gameCtx.Inject(inputEntity, tempCtx, infraCtx);
+            gameCtx.Inject(inputEntity, tempCtx, infraCtx, camera);
         }
     }
 }

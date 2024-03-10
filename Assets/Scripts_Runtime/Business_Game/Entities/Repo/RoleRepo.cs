@@ -11,6 +11,9 @@ namespace Act {
         public void Add(RoleEntity role) {
             all.Add(role.entityID, role);
         }
+        public bool Tryget(int entityID, out RoleEntity role) {
+            return all.TryGetValue(entityID, out role);
+        }
         public int TakeAll(out RoleEntity[] allRole) {
             if (all.Count >= tempArray.Length) {
                 tempArray = new RoleEntity[all.Count * 2];
