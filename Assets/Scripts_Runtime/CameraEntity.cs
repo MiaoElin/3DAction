@@ -5,9 +5,10 @@ namespace Act {
         public Camera camera;
         public Vector3 offset;
         public CameraEntity() {
-            offset = new Vector3(0, 9, -10);
         }
-        // public void Init(Vector3 owenrPos)
+        public void Ctor() {
+            offset = camera.transform.position;
+        }
         public void FollowSet(Vector3 targetPos) {
             camera.transform.position = targetPos + offset;
         }

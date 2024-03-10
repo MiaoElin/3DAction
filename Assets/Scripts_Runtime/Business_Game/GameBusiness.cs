@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Act {
     public static class GameBusiness {
         public static void EnterGame(GameContext ctx) {
-            var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, 0, 0), Ally.Player);
+            var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, 5, 0), Ally.Player);
             ctx.playerEntity.OwnerEntityID = owner.entityID;
             var game = ctx.gameEntity;
             game.status = GameStatus.InGame;

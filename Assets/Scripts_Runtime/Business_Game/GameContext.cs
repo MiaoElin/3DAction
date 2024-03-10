@@ -22,6 +22,7 @@ namespace Act {
             this.tempCtx = tempCtx;
             this.infraCtx = infraCtx;
             cameraEntity.camera = camera;
+            cameraEntity.Ctor();
         }
         public RoleEntity GetOwner() {
             roleRepo.Tryget(playerEntity.OwnerEntityID, out RoleEntity role);
