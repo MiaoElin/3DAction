@@ -12,12 +12,14 @@ namespace Act {
 
         // SpriteRenderer sr;
         public float moveSpeed;
+        public bool isInGround;
 
         public RoleEntity() {
         }
 
         void OnCollisionEnter(Collision other) {
             Debug.Log(other.gameObject.name);
+            isInGround = true;
             // other.gameObject.GetComponent<TowerEntity>();
         }
 
@@ -26,7 +28,7 @@ namespace Act {
         }
 
         void OnCollisionExit(Collision other) {
-
+            isInGround = false;
         }
 
         void OnTriggerEnter(Collider other) {
@@ -81,10 +83,17 @@ namespace Act {
         }
 
         public void Falling(float dt) {
+            if (isInGround) {
+                var vel = rb.velocity;
+                vel.y = 0;
+                rb.velocity = vel;
+                return;
+            }
             Vector3 velo = rb.velocity;
             const float G = -9.81f;
             velo.y += G * dt;
             rb.velocity = velo;
+
         }
 
         public void Move_To(Vector3 targetPos, float dt) {
