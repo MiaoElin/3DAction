@@ -20,6 +20,7 @@ namespace Act {
             for (int i = 0; i < roleLen; i++) {
                 var role = roles[i];
                 RoleDomain.Move(ctx, role, fixdt);
+                // Debug.Log(role.rb.velocity + " " + role.transform.position);
             }
             var owner = ctx.GetOwner();
             ctx.cameraEntity.FollowSet(owner.Get_Pos());

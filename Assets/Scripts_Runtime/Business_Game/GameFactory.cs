@@ -10,6 +10,7 @@ namespace Act {
             var role = GameObject.Instantiate(prefab).GetComponent<RoleEntity>();
             role.Ctor();
             role.Set_Pos(pos);
+            role.ally = ally;
             role.typeID = typeID;
             role.entityID = ctx.iDService.RoleRecord++;
             role.moveSpeed = tM.moveSpeed;

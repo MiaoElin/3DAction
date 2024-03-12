@@ -41,6 +41,15 @@ namespace Act {
             ctx.inputEntity.Process();
             float dt = Time.deltaTime;
             GameBusiness.Tick(ctx.gameCtx, dt);
+
+            // Gravity 影响 velocity, velocity 影响 position
+            // 速度 velocity m/s
+            Physics.Simulate(dt);
+        }
+
+        void FixedUpdate() {
+            // Auto Simulate
+            // Physics.Simulate(dt);
         }
     }
 }

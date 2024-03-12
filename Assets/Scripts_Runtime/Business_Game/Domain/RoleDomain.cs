@@ -11,6 +11,7 @@ namespace Act {
             if (role.moveType == moveType.ByInput) {
                 Vector3 dir = ctx.inputEntity.moveAxis;
                 role.Move(dir, dt);
+                role.Falling(dt);
             }
 
         }
