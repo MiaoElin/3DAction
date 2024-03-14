@@ -6,8 +6,6 @@ namespace Act {
         public int typeID;
         public Ally ally;
         public moveType moveType;
-        public Vector3 faceDir;
-
         public Rigidbody rb;
 
         // SpriteRenderer sr;
@@ -60,7 +58,7 @@ namespace Act {
             rb.velocity = Vector3.zero;
         }
         public void Set_FaceDir(Vector3 faceDir) {
-            this.faceDir = faceDir;
+            transform.forward = faceDir;
         }
 
 
@@ -80,6 +78,9 @@ namespace Act {
             velo = dir.normalized * moveSpeed;
             velo.y = y;
             rb.velocity = velo;
+            if (dir != Vector3.zero) {
+                Set_FaceDir(dir);
+            }
         }
 
         public void Falling(float dt) {

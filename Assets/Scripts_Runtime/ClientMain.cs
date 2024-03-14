@@ -38,13 +38,16 @@ namespace Act {
 
         // Update is called once per frame
         void Update() {
-            ctx.inputEntity.Process();
+            ctx.inputEntity.Process(mainCamera.transform.forward, mainCamera.transform.right);
             float dt = Time.deltaTime;
             GameBusiness.Tick(ctx.gameCtx, dt);
 
             // Gravity 影响 velocity, velocity 影响 position
             // 速度 velocity m/s
             Physics.Simulate(dt);
+        }
+        void LateUpdate() {
+            GameBusiness.LateTcik(ctx.gameCtx);
         }
 
         void FixedUpdate() {

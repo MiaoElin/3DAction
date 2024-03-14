@@ -7,7 +7,6 @@ namespace Act {
             var list = Addressables.LoadAssetsAsync<GameObject>("Entities", null).WaitForCompletion();
             foreach (var va in list) {
                 ctx.Entity_Add(va.name, va);
-                Debug.Log(list.Count);
             }
         }
     }
