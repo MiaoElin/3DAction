@@ -25,7 +25,7 @@ namespace Act {
             int roleLen = ctx.roleRepo.TakeAll(out RoleEntity[] roles);
             for (int i = 0; i < roleLen; i++) {
                 var role = roles[i];
-
+                role.Set_lastPos(role.Get_Pos());
                 RoleDomain.Move(ctx, role, fixdt);
             }
             ctx.cameraEntity.Tick(ctx.inputEntity.mouseWheel, fixdt);
@@ -35,7 +35,7 @@ namespace Act {
 
             // ctx.cameraEntity.GetMovedPosInSphere(mouseAxis.x, mouseAxis.y, owner.Get_Pos(), 10);
             ctx.cameraEntity.isVertical = ctx.inputEntity.isVertical;
-            ctx.cameraEntity.FollowSet(owner.Get_Pos(), ctx.inputEntity.left_MouseAxis);
+            ctx.cameraEntity.FollowSet(owner, ctx.inputEntity.left_MouseAxis);
         }
     }
 

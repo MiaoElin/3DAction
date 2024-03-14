@@ -7,6 +7,7 @@ namespace Act {
         public Ally ally;
         public moveType moveType;
         public Rigidbody rb;
+        public Vector3 lastPos;
 
         // SpriteRenderer sr;
         public float moveSpeed;
@@ -67,6 +68,12 @@ namespace Act {
         }
         public Vector3 Get_Pos() {
             return transform.position;
+        }
+        public Vector3 Get_LastPos() {
+            return lastPos;
+        }
+        public void Set_lastPos(Vector3 pos) {
+            lastPos = pos;
         }
         public void Move(Vector3 dir, float dt) {
             // if (dir == Vector3.zero) {

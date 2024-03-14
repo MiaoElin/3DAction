@@ -11,7 +11,7 @@ namespace Act {
         public float mouseWheelSpeed;
         public CameraEntity() {
             angelX = 0;
-            angelY = 33;
+            angelY = 30;
             isVertical = false;
             mouseWheelSpeed = 10;
         }
@@ -25,9 +25,8 @@ namespace Act {
 
         }
         public void Tick(float mouseWheel, float dt) {
-            Debug.Log(mouseWheel);
             distance -= mouseWheel * mouseWheelSpeed;
-            distance = Mathf.Clamp(distance, 1, 20);
+            distance = Mathf.Clamp(distance, 3, 20);
         }
         public void GetMovedPosInSphere(float xOffset, float yOffset, Vector3 centerPos, float radius) {
             angelY = (angelY + yOffset * 2);
@@ -42,26 +41,29 @@ namespace Act {
             LookAT(centerPos);
         }
 
-        public void FollowSet(Vector3 targetPos, Vector2 mouseAxis) {
-            // camera.transform.position = targetPos + offset;
+        public void FollowSet(RoleEntity owner, Vector2 mouseAxis) {
+            var targetPos = Vector3.zero;
             if (isVertical) {
-                camera.transform.position = targetPos + offset;
+                // GetMovedPosInSphere(mouseAxis.x, mouseAxis.y, targetPos, distance);
+                targetPos = owner.Get_LastPos();
             } else {
-                mouseAxis *= 4;
+                targetPos = owner.Get_Pos();
                 // angelY = (angelY - mouseAxis.y);
                 // angelX = (angelX + mouseAxis.x) % 360;
                 // mouseAxis.y = Mathf.Clamp(mouseAxis.y, angelY - 90, angelY);
                 // mouseAxis.x = Mathf.Clamp(mouseAxis.x, -angelX, 360 - angelX);
                 // Debug.Log(mouseAxis.y);
-                Quaternion xRot = Quaternion.AngleAxis(mouseAxis.x, Vector3.forward);
-                Quaternion yRot = Quaternion.AngleAxis(-mouseAxis.y, camera.transform.right);
-                var dir = (camera.transform.position - targetPos).normalized;
-                dir = xRot * yRot * dir;
-                dir *= distance;
-                offset = dir;
-                camera.transform.position = targetPos + offset;
+
             }
-            camera.transform.forward = (targetPos - camera.transform.position).normalized;
+            mouseAxis *= 3;
+            Quaternion xRot = Quaternion.AngleAxis(mouseAxis.x, Vector3.forward);
+            Quaternion yRot = Quaternion.AngleAxis(-mouseAxis.y, camera.transform.right);
+            var dir = (camera.transform.position - targetPos).normalized;
+            dir = xRot * yRot * dir;
+            dir *= distance;
+            offset = dir;
+            camera.transform.position = owner.Get_Pos() + offset;
+            camera.transform.forward = (owner.Get_Pos() - camera.transform.position).normalized;
         }
     }
 }
