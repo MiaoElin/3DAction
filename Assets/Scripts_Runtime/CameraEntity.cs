@@ -8,20 +8,26 @@ namespace Act {
         public float angelY;
         public bool isVertical;
         public float distance;
+        public float mouseWheelSpeed;
         public CameraEntity() {
             angelX = 0;
             angelY = 33;
             isVertical = false;
+            mouseWheelSpeed = 10;
         }
         public void Ctor() {
             offset = camera.transform.position;
-            distance = 10;
-
+            distance = Vector3.Distance(camera.transform.position, Vector3.zero);
         }
         public void LookAT(Vector3 target) {
             // camera.transform.LookAt(target);
             camera.transform.forward = target - camera.transform.position;
 
+        }
+        public void Tick(float mouseWheel, float dt) {
+            Debug.Log(mouseWheel);
+            distance -= mouseWheel * mouseWheelSpeed;
+            distance = Mathf.Clamp(distance, 1, 20);
         }
         public void GetMovedPosInSphere(float xOffset, float yOffset, Vector3 centerPos, float radius) {
             angelY = (angelY + yOffset * 2);

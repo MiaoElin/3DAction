@@ -4,9 +4,10 @@ using System.Collections.Generic;
 namespace Act {
     public class inputEntity {
         public Vector3 moveAxis;
-        public Vector2 mouseAxis;
+        public Vector2 left_MouseAxis;
         public Vector3 mouseScreenPos;
         public Vector3 mouseWorldPos;
+        public float mouseWheel;
         public InputKey inputKey;
         Dictionary<InputKey, KeyCode[]> keyboardBindDic;
         public bool isVertical;
@@ -27,6 +28,7 @@ namespace Act {
             KeyboarBind(InputKey.Jump, new KeyCode[] { KeyCode.Space });
         }
         public void Process(Vector3 forward, Vector3 right) {
+            // moveAxis
             moveAxis = Vector3.zero;
             forward.y = 0;
             right.y = 0;
@@ -53,11 +55,15 @@ namespace Act {
 
             moveAxis = forward * moveAxis.z + right * moveAxis.x;
 
-            mouseAxis = Vector2.zero;
+            // mouseAxis
+            left_MouseAxis = Vector2.zero;
             if (Input.GetMouseButton(0)) {
-                mouseAxis.x = Input.GetAxis("Mouse X");
-                mouseAxis.y = Input.GetAxis("Mouse Y");
+                left_MouseAxis.x = Input.GetAxis("Mouse X");
+                left_MouseAxis.y = Input.GetAxis("Mouse Y");
             }
+
+            // mouseWheel
+            mouseWheel = Input.GetAxis("Mouse ScrollWheel");
         }
 
         public bool IsKeyPress(InputKey key) {

@@ -27,18 +27,15 @@ namespace Act {
                 var role = roles[i];
 
                 RoleDomain.Move(ctx, role, fixdt);
-                // Debug.Log(role.rb.velocity + " " + role.transform.position);
             }
-            // var owner = ctx.GetOwner();
-            // ctx.cameraEntity.FollowSet(owner.Get_Pos());
-            // ctx.cameraEntity.LookAT(owner.Get_Pos());
+            ctx.cameraEntity.Tick(ctx.inputEntity.mouseWheel, fixdt);
         }
         private static void InGame_LateTick(GameContext ctx) {
             var owner = ctx.GetOwner();
 
             // ctx.cameraEntity.GetMovedPosInSphere(mouseAxis.x, mouseAxis.y, owner.Get_Pos(), 10);
             ctx.cameraEntity.isVertical = ctx.inputEntity.isVertical;
-            ctx.cameraEntity.FollowSet(owner.Get_Pos(), ctx.inputEntity.mouseAxis);
+            ctx.cameraEntity.FollowSet(owner.Get_Pos(), ctx.inputEntity.left_MouseAxis);
         }
     }
 
