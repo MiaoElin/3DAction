@@ -48,15 +48,29 @@ namespace Act {
             } else {
                 targetPos = owner.Get_Pos();
             }
-            mouseAxis *= 3;
-            Quaternion xRot = Quaternion.AngleAxis(mouseAxis.x, Vector3.forward);
-            Quaternion yRot = Quaternion.AngleAxis(-mouseAxis.y, camera.transform.right);
+            mouseAxis *= 10;
+            var rotation = camera.transform.eulerAngles;
+            // 0 < rotation.x - mouseAxis.y < 90
+            //  < rotation.y + mouseAxis.x < 360
+            // mouseAxis.x = Mathf.Clamp(mouseAxis.x, -rotation.y, 360 - rotation.y);
+            // mouseAxis.y = Mathf.Clamp(mouseAxis.y, rotation.x - 90, rotation.x);
             var dir = (camera.transform.position - targetPos).normalized;
-            dir = xRot * yRot * dir;
+            if (mouseAxis.y > rotation.x - 90 && mouseAxis.y < rotation.x && mouseAxis.y != 0) {
+                Quaternion yRot = Quaternion.AngleAxis(-mouseAxis.y, camera.transform.right);
+                dir = yRot * dir;
+            } else {
+            }
+            if (mouseAxis.x > -rotation.y && mouseAxis.x < 360 - rotation.y && mouseAxis.x != 0) {
+                Quaternion xRot = Quaternion.AngleAxis(mouseAxis.x, Vector3.forward);
+                dir = xRot * dir;
+            } else {
+            }
+            // dir = xRot * yRot * dir;
             dir *= distance;
             offset = dir;
             camera.transform.position = owner.Get_Pos() + offset;
             camera.transform.forward = (owner.Get_Pos() - camera.transform.position).normalized;
+
         }
     }
 }
