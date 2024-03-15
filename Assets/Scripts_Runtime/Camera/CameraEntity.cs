@@ -49,25 +49,42 @@ namespace Act {
                 targetPos = owner.Get_Pos();
             }
             mouseAxis *= 10;
-            var rotation = camera.transform.eulerAngles;
+            mouseAxis.y *= -1;
+
+            // 1. 得到未来相机移动到的地方
+            // - 如果未来的坐标，看向角色时的角度不对 -> 不设置相机坐标
+            // - 否则，设置相机坐标
+            var euler = camera.transform.eulerAngles;
             // 0 < rotation.x - mouseAxis.y < 90
             //  < rotation.y + mouseAxis.x < 360
             // mouseAxis.x = Mathf.Clamp(mouseAxis.x, -rotation.y, 360 - rotation.y);
             // mouseAxis.y = Mathf.Clamp(mouseAxis.y, rotation.x - 90, rotation.x);
+            Quaternion rot =  Quaternion.identity;
             var dir = (camera.transform.position - targetPos).normalized;
-            if (mouseAxis.y > rotation.x - 90 && mouseAxis.y < rotation.x && mouseAxis.y != 0) {
-                Quaternion yRot = Quaternion.AngleAxis(-mouseAxis.y, camera.transform.right);
-                dir = yRot * dir;
-            } else {
+            {
+                // 处理 上下角度
+                Quaternion yRot = Quaternion.AngleAxis(mouseAxis.y, camera.transform.right);
+                Vector3 futureDir = yRot * dir;
+                futureDir *= distance;
+                Vector3 futurePos = owner.Get_Pos() + futureDir;
+                Vector3 lookAtDir = owner.Get_Pos() - futurePos;
+                lookAtDir.Normalize();
+                Vector2 cameraFace = new Vector2(lookAtDir.z, lookAtDir.y);
+                float angle = Vector2.SignedAngle(cameraFace, new Vector2(1, 0));
+                if (angle >= 0) {
+                    dir = yRot * dir;
+                } else {
+                    Debug.Log("Failed");
+                }
             }
-            if (mouseAxis.x > -rotation.y && mouseAxis.x < 360 - rotation.y && mouseAxis.x != 0) {
-                Quaternion xRot = Quaternion.AngleAxis(mouseAxis.x, Vector3.forward);
-                dir = xRot * dir;
-            } else {
-            }
+
+            // 处理 左右
+            Quaternion xRot = Quaternion.AngleAxis(mouseAxis.x, Vector3.up);
+            dir = xRot * dir;
             // dir = xRot * yRot * dir;
             dir *= distance;
             offset = dir;
+
             camera.transform.position = owner.Get_Pos() + offset;
             camera.transform.forward = (owner.Get_Pos() - camera.transform.position).normalized;
 
