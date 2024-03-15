@@ -60,7 +60,6 @@ namespace Act {
             if (Input.GetMouseButton(0)) {
                 left_MouseAxis.x = Input.GetAxis("Mouse X");
                 left_MouseAxis.y = Input.GetAxis("Mouse Y");
-                Debug.Log(left_MouseAxis);
             }
 
             // mouseWheel

@@ -44,16 +44,9 @@ namespace Act {
         public void FollowSet(RoleEntity owner, Vector2 mouseAxis) {
             var targetPos = Vector3.zero;
             if (isVertical) {
-                // GetMovedPosInSphere(mouseAxis.x, mouseAxis.y, targetPos, distance);
                 targetPos = owner.Get_LastPos();
             } else {
                 targetPos = owner.Get_Pos();
-                // angelY = (angelY - mouseAxis.y);
-                // angelX = (angelX + mouseAxis.x) % 360;
-                // mouseAxis.y = Mathf.Clamp(mouseAxis.y, angelY - 90, angelY);
-                // mouseAxis.x = Mathf.Clamp(mouseAxis.x, -angelX, 360 - angelX);
-                // Debug.Log(mouseAxis.y);
-
             }
             mouseAxis *= 3;
             Quaternion xRot = Quaternion.AngleAxis(mouseAxis.x, Vector3.forward);

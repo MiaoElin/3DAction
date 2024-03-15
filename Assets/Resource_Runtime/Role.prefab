@@ -105,9 +105,9 @@ MonoBehaviour:
   typeID: 0
   ally: 0
   moveType: 0
-  faceDir: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
   moveSpeed: 0
+  isInGround: 0
 --- !u!54 &-8036390192087259624
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &-1002373032406303427
 BoxCollider:

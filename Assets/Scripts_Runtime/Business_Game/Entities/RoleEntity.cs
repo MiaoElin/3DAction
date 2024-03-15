@@ -7,7 +7,7 @@ namespace Act {
         public Ally ally;
         public moveType moveType;
         public Rigidbody rb;
-        public Vector3 lastPos;
+        Vector3 lastPos;
 
         // SpriteRenderer sr;
         public float moveSpeed;
