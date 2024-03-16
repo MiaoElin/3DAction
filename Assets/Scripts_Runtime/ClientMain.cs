@@ -47,7 +47,8 @@ namespace Act {
             Physics.Simulate(dt);
         }
         void LateUpdate() {
-            GameBusiness.LateTcik(ctx.gameCtx);
+            float dt = Time.deltaTime;
+            GameBusiness.LateTcik(ctx.gameCtx, dt);
         }
 
         void FixedUpdate() {

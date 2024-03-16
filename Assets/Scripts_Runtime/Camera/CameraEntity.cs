@@ -2,13 +2,16 @@ using System;
 using UnityEngine;
 namespace Act {
     public class CameraEntity {
+
         public Camera camera;
+        Vector3 cameraPos;
         public Vector3 offset;
         public float angelX;
         public float angelY;
         public bool isVertical;
         public float distance;
         public float mouseWheelSpeed;
+
         public CameraEntity() {
             angelX = 0;
             angelY = 30;
@@ -17,6 +20,7 @@ namespace Act {
         }
         public void Ctor() {
             offset = camera.transform.position;
+            cameraPos = camera.transform.position;
             distance = Vector3.Distance(camera.transform.position, Vector3.zero);
         }
         public void LookAT(Vector3 target) {
@@ -25,7 +29,7 @@ namespace Act {
 
         }
         public void Tick(float mouseWheel, float dt) {
-            distance -= mouseWheel * mouseWheelSpeed;
+            distance -= mouseWheel * mouseWheelSpeed * dt;
             distance = Mathf.Clamp(distance, 3, 20);
         }
         public void GetMovedPosInSphere(float xOffset, float yOffset, Vector3 centerPos, float radius) {
@@ -41,13 +45,10 @@ namespace Act {
             LookAT(centerPos);
         }
 
-        public void FollowSet(RoleEntity owner, Vector2 mouseAxis) {
+        public void FollowSet(RoleEntity owner, Vector2 mouseAxis, float dt) {
             var targetPos = Vector3.zero;
-            if (isVertical) {
-                targetPos = owner.Get_LastPos();
-            } else {
-                targetPos = owner.Get_Pos();
-            }
+            targetPos = owner.Get_Pos();
+
             mouseAxis *= 10;
             mouseAxis.y *= -1;
             var rotation = camera.transform.eulerAngles;
@@ -55,19 +56,29 @@ namespace Act {
             // 0 < rotation.y + mouseAxis.x < 360
             // mouseAxis.x = Mathf.Clamp(mouseAxis.x, -rotation.y, 360 - rotation.y);
             // mouseAxis.y = Mathf.Clamp(mouseAxis.y, -rotation.x,90-rotation.y);
-            var dir = (camera.transform.position - targetPos).normalized;
+            var dir = (cameraPos - targetPos).normalized;
             if (mouseAxis.y > -rotation.x && mouseAxis.y < 90 - rotation.x && mouseAxis.y != 0) {
                 Quaternion yRot = Quaternion.AngleAxis(mouseAxis.y, camera.transform.right);
                 dir = yRot * dir;
-            } else {
             }
             Quaternion xRot = Quaternion.AngleAxis(mouseAxis.x, Vector3.up);
             dir = xRot * dir;
             dir *= distance;
             offset = dir;
 
-            camera.transform.position = owner.Get_Pos() + offset;
-            camera.transform.forward = (owner.Get_Pos() - camera.transform.position).normalized;
+            // Sine Wave
+            // Phase 相位
+            float phase = 1;
+            // Amplitude 振幅
+            float amplitude = 0.2f;
+            // Frequency 振频
+            float frequency = 4f;
+            float sine = phase + Mathf.Sin(Time.time * frequency) * amplitude;
+            Vector3 shake = sine * Vector3.up;
+
+            camera.transform.forward = -offset.normalized;
+            cameraPos = owner.Get_Pos() + offset;
+            camera.transform.position = cameraPos + shake;
 
         }
     }

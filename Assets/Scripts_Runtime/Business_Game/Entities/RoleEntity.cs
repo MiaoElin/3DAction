@@ -17,7 +17,7 @@ namespace Act {
         }
 
         void OnCollisionEnter(Collision other) {
-            Debug.Log(other.gameObject.name);
+            Debug.Log(other.gameObject.tag);
             isInGround = true;
             // other.gameObject.GetComponent<TowerEntity>();
         }

@@ -15,10 +15,10 @@ namespace Act {
                 InGame_Tick(ctx, fixdt);
             }
         }
-        public static void LateTcik(GameContext ctx) {
+        public static void LateTcik(GameContext ctx, float dt) {
             var game = ctx.gameEntity;
             if (game.status == GameStatus.InGame) {
-                InGame_LateTick(ctx);
+                InGame_LateTick(ctx, dt);
             }
         }
         public static void InGame_Tick(GameContext ctx, float fixdt) {
@@ -30,12 +30,12 @@ namespace Act {
             }
             ctx.cameraEntity.Tick(ctx.inputEntity.mouseWheel, fixdt);
         }
-        private static void InGame_LateTick(GameContext ctx) {
+        private static void InGame_LateTick(GameContext ctx, float dt) {
             var owner = ctx.GetOwner();
 
             // ctx.cameraEntity.GetMovedPosInSphere(mouseAxis.x, mouseAxis.y, owner.Get_Pos(), 10);
             ctx.cameraEntity.isVertical = ctx.inputEntity.isVertical;
-            ctx.cameraEntity.FollowSet(owner, ctx.inputEntity.left_MouseAxis);
+            ctx.cameraEntity.FollowSet(owner, ctx.inputEntity.left_MouseAxis, dt);
         }
     }
 

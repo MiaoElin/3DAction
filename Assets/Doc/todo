@@ -8,3 +8,44 @@ Role
  -跳
  -冲刺
  -
+
+3C
+Controller 输入控制
+- 键盘
+- 鼠标
+- 手柄
+- 触屏(UI)
+Character 角色
+- 物理(碰撞Collision/交叉Trigger/Physics.Overlap/Physics.CastBox)
+- 移动
+- 跳
+- 模型(Mesh/贴图/Shader/材质) Tech Artist
+- 动画(Animator)
+Camera 相机
+- 跟随
+- 看向/旋转
+- 震屏
+
+UI
+- 屏幕空间
+- 世界空间
+
+美术
+VFX 特效
+- ParticleSystem 粒子系统
+
+音效
+SFX 音效 / BGM 背景音乐
+- AudioSource 播放
+
+系统
+- 战斗系统
+- 生存系统
+- 存档
+- 任务
+- 对话
+- 装备
+- 背包
+
+网络
+- TCP 发送接收

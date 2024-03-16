@@ -532,6 +532,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7773346734161204927, guid: 29ad344a72ebd6a46b1bc944454d4797, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773346734161204927, guid: 29ad344a72ebd6a46b1bc944454d4797, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -574,6 +578,10 @@ PrefabInstance:
     - target: {fileID: 8780558459535808826, guid: 29ad344a72ebd6a46b1bc944454d4797, type: 3}
       propertyPath: m_Name
       value: Plane
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780558459535808826, guid: 29ad344a72ebd6a46b1bc944454d4797, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
