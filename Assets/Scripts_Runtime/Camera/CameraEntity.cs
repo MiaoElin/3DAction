@@ -16,7 +16,7 @@ namespace Act {
             angelX = 0;
             angelY = 30;
             isVertical = false;
-            mouseWheelSpeed = 10;
+            mouseWheelSpeed = 150;
         }
         public void Ctor() {
             offset = camera.transform.position;
@@ -63,6 +63,7 @@ namespace Act {
             if (mouseAxis.y > -rotation.x && mouseAxis.y < 90 - rotation.x && mouseAxis.y != 0) {
                 Quaternion yRot = Quaternion.AngleAxis(mouseAxis.y, camera.transform.right);
                 dir = yRot * dir;
+                Debug.Log("In");
             }
             Quaternion xRot = Quaternion.AngleAxis(mouseAxis.x, Vector3.up);
             dir = xRot * dir;
@@ -81,9 +82,9 @@ namespace Act {
 
             camera.transform.forward = -offset.normalized;
             cameraPos = owner.Get_Pos() + offset;
-            camera.transform.position = cameraPos ;
+            camera.transform.position = cameraPos;
 
-            
+
 
 
         }
