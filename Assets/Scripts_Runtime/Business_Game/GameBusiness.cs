@@ -9,19 +9,20 @@ namespace Act {
             var game = ctx.gameEntity;
             game.status = GameStatus.InGame;
         }
-        public static void Tick(GameContext ctx, float fixdt) {
+        public static void Tick(GameContext ctx, float dt) {
             var game = ctx.gameEntity;
             if (game.status == GameStatus.InGame) {
-                InGame_Tick(ctx, fixdt);
+                InGame_Tick(ctx, dt);
             }
         }
-        public static void LateTcik(GameContext ctx, float dt) {
+        public static void FixedTick(GameContext ctx, float fixdt) {
             var game = ctx.gameEntity;
             if (game.status == GameStatus.InGame) {
-                InGame_LateTick(ctx, dt);
+                InGame_FixedTick(ctx, fixdt);
             }
         }
-        public static void InGame_Tick(GameContext ctx, float fixdt) {
+
+        private static void InGame_FixedTick(GameContext ctx, float fixdt) {
             int roleLen = ctx.roleRepo.TakeAll(out RoleEntity[] roles);
             for (int i = 0; i < roleLen; i++) {
                 var role = roles[i];
@@ -29,6 +30,16 @@ namespace Act {
                 RoleDomain.Move(ctx, role, fixdt);
             }
             ctx.cameraEntity.Tick(ctx.inputEntity.mouseWheel, fixdt);
+        }
+
+        public static void LateTcik(GameContext ctx, float dt) {
+            var game = ctx.gameEntity;
+            if (game.status == GameStatus.InGame) {
+                InGame_LateTick(ctx, dt);
+            }
+        }
+        public static void InGame_Tick(GameContext ctx, float dt) {
+
         }
         private static void InGame_LateTick(GameContext ctx, float dt) {
             var owner = ctx.GetOwner();

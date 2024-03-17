@@ -47,8 +47,11 @@ namespace Act {
 
         public void FollowSet(RoleEntity owner, Vector2 mouseAxis, float dt) {
             var targetPos = Vector3.zero;
-            targetPos = owner.Get_Pos();
-
+            if (isVertical) {
+                targetPos = owner.Get_LastPos();
+            } else {
+                targetPos = owner.Get_Pos();
+            }
             mouseAxis *= 10;
             mouseAxis.y *= -1;
             var rotation = camera.transform.eulerAngles;
@@ -68,17 +71,20 @@ namespace Act {
 
             // Sine Wave
             // Phase 相位
-            float phase = 1;
+            // float phase = 1;
             // Amplitude 振幅
-            float amplitude = 0.2f;
+            // float amplitude = 0.2f;
             // Frequency 振频
-            float frequency = 4f;
-            float sine = phase + Mathf.Sin(Time.time * frequency) * amplitude;
-            Vector3 shake = sine * Vector3.up;
+            // float frequency = 4f;
+            // float sine = phase + Mathf.Sin(Time.time * frequency) * amplitude;
+            // Vector3 shake = sine * Vector3.up;
 
             camera.transform.forward = -offset.normalized;
             cameraPos = owner.Get_Pos() + offset;
-            camera.transform.position = cameraPos + shake;
+            camera.transform.position = cameraPos ;
+
+            
+
 
         }
     }
