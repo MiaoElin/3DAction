@@ -11,7 +11,7 @@ namespace Act {
 
         // SpriteRenderer sr;
         public float moveSpeed;
-        public float 
+        // public float 
         public bool isInGround;
 
         public RoleEntity() {
