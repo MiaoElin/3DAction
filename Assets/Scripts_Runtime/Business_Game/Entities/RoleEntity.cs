@@ -20,6 +20,7 @@ namespace Act {
         void OnCollisionEnter(Collision other) {
             if (other.gameObject.tag == "Ground") {
                 isInGround = true;
+                Debug.Log("Inground");
             }
             // other.gameObject.GetComponent<TowerEntity>();
         }
@@ -108,7 +109,7 @@ namespace Act {
 
         }
 
-        public void Jump(){
+        public void Jump() {
 
         }
 

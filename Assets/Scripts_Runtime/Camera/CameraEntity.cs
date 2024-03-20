@@ -63,7 +63,6 @@ namespace Act {
             if (mouseAxis.y > -rotation.x && mouseAxis.y < 90 - rotation.x && mouseAxis.y != 0) {
                 Quaternion yRot = Quaternion.AngleAxis(mouseAxis.y, camera.transform.right);
                 dir = yRot * dir;
-                Debug.Log("In");
             }
             Quaternion xRot = Quaternion.AngleAxis(mouseAxis.x, Vector3.up);
             dir = xRot * dir;
