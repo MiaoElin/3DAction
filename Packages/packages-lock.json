@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.gamearki.gamefunctions": {
+      "version": "ssh://git@github.com/GameArki/GameFunctions.git?path=Assets",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "00088f668d560f8a40af249096f581ea28ab4dde"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

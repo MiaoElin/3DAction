@@ -72,7 +72,7 @@ namespace Act {
                 FixedTick(fixdt);
                 restTime = 0;
             } else {
-                while (dt >= fixdt) {
+                while (dt > fixdt) {
                     dt -= fixdt;
                     FixedTick(fixdt);
                 }

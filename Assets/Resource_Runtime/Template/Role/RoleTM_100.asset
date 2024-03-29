@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RoleTM_100
   m_EditorClassIdentifier: 
   typeID: 100
-  moveSpeed: 5
+  moveSpeed: 15
   moveType: 2

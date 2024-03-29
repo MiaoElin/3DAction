@@ -9,6 +9,12 @@ namespace Act {
         public Rigidbody rb;
         Vector3 lastPos;
 
+        Vector3 oldForward;
+        Vector3 startForward;
+        Vector3 endForward;
+        float time;
+        float duration;
+
         // SpriteRenderer sr;
         public float moveSpeed;
         // public float 
@@ -20,7 +26,6 @@ namespace Act {
         void OnCollisionEnter(Collision other) {
             if (other.gameObject.tag == "Ground") {
                 isInGround = true;
-                Debug.Log("Inground");
             }
             // other.gameObject.GetComponent<TowerEntity>();
         }
@@ -63,8 +68,57 @@ namespace Act {
             rb = GetComponentInChildren<Rigidbody>();
             rb.velocity = Vector3.zero;
         }
-        public void Set_FaceDir(Vector3 faceDir) {
-            transform.forward = faceDir;
+        public void Set_FaceDir(Vector3 faceDir, float dt) {
+            if (faceDir == Vector3.zero) {
+                return;
+            }
+            // Vector3 startForward;
+            // Vector3 endForward;
+            // endForward = new Vector3(faceDir.x, 0, faceDir.z);
+            // startForward = transform.forward;
+            // if (oldForward != endForward) {
+            //     time = 0;
+            //     duration = 0.1f;
+            // }
+            // if (time <= duration) {
+            //     time += dt;
+            //     float t = time / duration;
+            //     var startRot = Quaternion.LookRotation(startForward);
+            //     var endRot = Quaternion.LookRotation(endForward);
+            //     transform.rotation = Quaternion.Lerp(startRot, endRot, t);
+            // }
+            // // transform.forward = faceDir;
+
+
+            // 根据正面进行旋转
+            // old forward: (x0, y0, z1)
+            // new forward: (moveAxis.x, 0, moveAxis.y)
+            Vector3 newForward = new Vector3(faceDir.x, 0, faceDir.z).normalized;
+            if (oldForward != newForward) {
+                startForward = oldForward; // 缓动开始
+                if (startForward == Vector3.zero) {
+                    startForward = transform.forward;
+                }
+                endForward = newForward; // 缓动结束
+                time = 0;
+                duration = 0.25f;
+                oldForward = newForward;
+            }
+            // transform.rotation = Quaternion.LookRotation(newForward);
+
+            // 硬转
+            // transform.forward = newForward;
+
+            // 平滑转
+            if (time <= duration) {
+                time += dt;
+                float t = time / duration;
+                Quaternion startRot = Quaternion.LookRotation(startForward);
+                Quaternion endRot = Quaternion.LookRotation(endForward);
+                transform.rotation = Quaternion.Lerp(startRot, endRot, t);
+            }
+
+
         }
 
 
@@ -90,9 +144,7 @@ namespace Act {
             velo = dir.normalized * moveSpeed;
             velo.y = y;
             rb.velocity = velo;
-            if (dir != Vector3.zero) {
-                Set_FaceDir(dir);
-            }
+            Set_FaceDir(dir, dt);
         }
 
         public void Falling(float dt) {
