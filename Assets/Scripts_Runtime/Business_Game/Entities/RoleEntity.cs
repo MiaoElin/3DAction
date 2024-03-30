@@ -98,6 +98,7 @@ namespace Act {
                 startForward = oldForward; // 缓动开始
                 if (startForward == Vector3.zero) {
                     startForward = transform.forward;
+                    Debug.Log(startForward);
                 }
                 endForward = newForward; // 缓动结束
                 time = 0;
@@ -111,6 +112,7 @@ namespace Act {
 
             // 平滑转
             if (time <= duration) {
+                Debug.Log("in");
                 time += dt;
                 float t = time / duration;
                 Quaternion startRot = Quaternion.LookRotation(startForward);
