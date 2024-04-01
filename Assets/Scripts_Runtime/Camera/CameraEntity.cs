@@ -49,12 +49,13 @@ namespace Act {
 
         public void FollowSet(RoleEntity owner, Vector2 mouseAxis, float dt) {
             var targetPos = Vector3.zero;
-            if (isCamera_VerticalMove||!isCamera_HorizonalRound) {
+            if (isCamera_VerticalMove || !isCamera_HorizonalRound) {
                 targetPos = owner.Get_LastPos();
             } else {
                 targetPos = owner.Get_Pos();
             }
-            mouseAxis *= 10;
+            mouseAxis = mouseAxis * dt;
+            mouseAxis *= 1000;
             mouseAxis.y *= -1;
             var rotation = camera.transform.eulerAngles;
             // 0 < rotation.x + mouseAxis.y < 90

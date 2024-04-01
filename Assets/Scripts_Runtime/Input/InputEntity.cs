@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Act {
     public class inputEntity {
         public Vector3 moveAxis;
-        public Vector2 left_MouseAxis;
+        public Vector2 MouseAxis;
         public Vector3 mouseScreenPos;
         public Vector3 mouseWorldPos;
         public float mouseWheel;
@@ -68,10 +68,10 @@ namespace Act {
             moveAxis = forward * moveAxis.z + right * moveAxis.x;
 
             // mouseAxis
-            left_MouseAxis = Vector2.zero;
-            if (Input.GetMouseButton(0)||Input.GetMouseButton(0)) {
-                left_MouseAxis.x = Input.GetAxis("Mouse X");
-                left_MouseAxis.y = Input.GetAxis("Mouse Y");
+            MouseAxis = Vector2.zero;
+            if (Input.GetMouseButton(0)||Input.GetMouseButton(1)) {
+                MouseAxis.x = Input.GetAxis("Mouse X");
+                MouseAxis.y = Input.GetAxis("Mouse Y");
             }
 
             // mouseWheel

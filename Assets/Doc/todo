@@ -17,13 +17,13 @@ Controller 输入控制
 - 触屏(UI)
 Character 角色
 - 物理(碰撞Collision/交叉Trigger/Physics.Overlap/Physics.CastBox)
-- 移动
+√- 移动
 - 跳
 - 模型(Mesh/贴图/Shader/材质) Tech Artist
 - 动画(Animator)
 Camera 相机
-- 跟随
-- 看向/旋转
+√- 跟随
+√- 看向/旋转
 - 震屏
 
 UI
