@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
+
 namespace Act {
+
     public class RoleEntity : MonoBehaviour {
         public int entityID;
         public int typeID;
@@ -69,9 +71,14 @@ namespace Act {
             rb.velocity = Vector3.zero;
         }
         public void Set_FaceDir(Vector3 faceDir, float dt) {
+
+            // rb.angularVelocity = Vector3.zero;
+            // rb.angularVelocity = Vector3.up * 5;
+
             if (faceDir == Vector3.zero) {
                 return;
             }
+
             // Vector3 startForward;
             // Vector3 endForward;
             // endForward = new Vector3(faceDir.x, 0, faceDir.z);
@@ -112,7 +119,6 @@ namespace Act {
 
             // 平滑转
             if (time <= duration) {
-                Debug.Log("in");
                 time += dt;
                 float t = time / duration;
                 Quaternion startRot = Quaternion.LookRotation(startForward);
@@ -121,6 +127,10 @@ namespace Act {
             }
 
 
+        }
+
+        void OnGUI() {
+            GUILayout.Label("Angular: " + rb.angularVelocity);
         }
 
 
