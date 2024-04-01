@@ -72,7 +72,7 @@ namespace Act {
         }
         public void Set_FaceDir(Vector3 faceDir, float dt) {
 
-            // rb.angularVelocity = Vector3.zero;
+            // rb.angularVelocity = Vector3.zero; 可限制角速度对角色面向的影响
             // rb.angularVelocity = Vector3.up * 5;
 
             if (faceDir == Vector3.zero) {

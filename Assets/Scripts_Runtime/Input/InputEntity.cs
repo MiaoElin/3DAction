@@ -10,7 +10,9 @@ namespace Act {
         public float mouseWheel;
         public InputKey inputKey;
         Dictionary<InputKey, KeyCode[]> keyboardBindDic;
-        public bool isVertical;
+        public bool isCamera_VerticalMove;
+        public bool isCamera_HorizonalRound;
+        public bool isMouseRightPress;
         public inputEntity() {
             keyboardBindDic = new Dictionary<InputKey, KeyCode[]>();
         }
@@ -28,6 +30,16 @@ namespace Act {
             KeyboarBind(InputKey.Jump, new KeyCode[] { KeyCode.Space });
         }
         public void Process(Vector3 forward, Vector3 right) {
+            // isMouseRightDown
+            // 0 表示左按钮,1 表示右按钮,2 表示中间按钮
+            if (Input.GetMouseButton(1)) {
+                // 按下相机就移
+                isCamera_HorizonalRound = false;
+            } else {
+                // 没按下相机就转
+                isCamera_HorizonalRound = true;
+            }
+
             // moveAxis
             moveAxis = Vector3.zero;
             forward.y = 0;
@@ -48,16 +60,16 @@ namespace Act {
             }
 
             if (moveAxis.z != 0) {
-                isVertical = true;
+                isCamera_VerticalMove = true;
             } else {
-                isVertical = false;
+                isCamera_VerticalMove = false;
             }
 
             moveAxis = forward * moveAxis.z + right * moveAxis.x;
 
             // mouseAxis
             left_MouseAxis = Vector2.zero;
-            if (Input.GetMouseButton(0)) {
+            if (Input.GetMouseButton(0)||Input.GetMouseButton(0)) {
                 left_MouseAxis.x = Input.GetAxis("Mouse X");
                 left_MouseAxis.y = Input.GetAxis("Mouse Y");
             }

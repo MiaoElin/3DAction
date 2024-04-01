@@ -8,14 +8,16 @@ namespace Act {
         public Vector3 offset;
         public float angelX;
         public float angelY;
-        public bool isVertical;
+        public bool isCamera_VerticalMove;
+        public bool isCamera_HorizonalRound;
         public float distance;
         public float mouseWheelSpeed;
 
         public CameraEntity() {
             angelX = 0;
             angelY = 30;
-            isVertical = false;
+            isCamera_VerticalMove = false;
+            isCamera_HorizonalRound = true;
             mouseWheelSpeed = 150;
         }
         public void Ctor() {
@@ -47,7 +49,7 @@ namespace Act {
 
         public void FollowSet(RoleEntity owner, Vector2 mouseAxis, float dt) {
             var targetPos = Vector3.zero;
-            if (isVertical) {
+            if (isCamera_VerticalMove||!isCamera_HorizonalRound) {
                 targetPos = owner.Get_LastPos();
             } else {
                 targetPos = owner.Get_Pos();
