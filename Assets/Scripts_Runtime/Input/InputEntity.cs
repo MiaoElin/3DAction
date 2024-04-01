@@ -3,18 +3,25 @@ using UnityEngine;
 using System.Collections.Generic;
 namespace Act {
     public class inputEntity {
+        // roleInput
+        public bool isJumpKeyDown;
         public Vector3 moveAxis;
-        public Vector2 MouseAxis;
         public Vector3 mouseScreenPos;
         public Vector3 mouseWorldPos;
         public float mouseWheel;
         public InputKey inputKey;
         Dictionary<InputKey, KeyCode[]> keyboardBindDic;
+
+        // CameraInput
+        public Vector2 MouseAxis;
         public bool isCamera_VerticalMove;
         public bool isCamera_HorizonalRound;
         public bool isMouseRightPress;
+
+
         public inputEntity() {
             keyboardBindDic = new Dictionary<InputKey, KeyCode[]>();
+            isJumpKeyDown = false;
         }
         public void KeyboarBind(InputKey inputKey, KeyCode[] codes) {
             bool has = keyboardBindDic.TryAdd(inputKey, codes);
@@ -30,15 +37,6 @@ namespace Act {
             KeyboarBind(InputKey.Jump, new KeyCode[] { KeyCode.Space });
         }
         public void Process(Vector3 forward, Vector3 right) {
-            // isMouseRightDown
-            // 0 表示左按钮,1 表示右按钮,2 表示中间按钮
-            if (Input.GetMouseButton(1)) {
-                // 按下相机就移
-                isCamera_HorizonalRound = false;
-            } else {
-                // 没按下相机就转
-                isCamera_HorizonalRound = true;
-            }
 
             // moveAxis
             moveAxis = Vector3.zero;
@@ -67,15 +65,34 @@ namespace Act {
 
             moveAxis = forward * moveAxis.z + right * moveAxis.x;
 
+            // isMouseRightDown
+            // 0 表示左按钮,1 表示右按钮,2 表示中间按钮
+            isMouseRightPress = Input.GetMouseButton(1);
+
+            if (isMouseRightPress) {
+                // 按下相机就移
+                isCamera_HorizonalRound = false;
+            } else {
+                // 没按下相机就转
+                isCamera_HorizonalRound = true;
+            }
+
             // mouseAxis
             MouseAxis = Vector2.zero;
-            if (Input.GetMouseButton(0)||Input.GetMouseButton(1)) {
+            if (Input.GetMouseButton(0) || Input.GetMouseButton(1)) {
                 MouseAxis.x = Input.GetAxis("Mouse X");
                 MouseAxis.y = Input.GetAxis("Mouse Y");
             }
 
             // mouseWheel
             mouseWheel = Input.GetAxis("Mouse ScrollWheel");
+
+            // isJumpKeyDown
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                isJumpKeyDown = true;
+            } else {
+                isJumpKeyDown = false;
+            };
         }
 
         public bool IsKeyPress(InputKey key) {

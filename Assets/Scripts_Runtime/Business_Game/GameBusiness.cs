@@ -28,6 +28,8 @@ namespace Act {
                 var role = roles[i];
                 role.Set_lastPos(role.Get_Pos());
                 RoleDomain.Move(ctx, role, fixdt);
+                RoleDomain.Falling(role, fixdt);
+                RoleDomain.Jump(role,ctx.inputEntity.isJumpKeyDown);
             }
             ctx.cameraEntity.Tick(ctx.inputEntity.mouseWheel, fixdt);
         }
@@ -47,6 +49,7 @@ namespace Act {
             // ctx.cameraEntity.GetMovedPosInSphere(mouseAxis.x, mouseAxis.y, owner.Get_Pos(), 10);
             ctx.cameraEntity.isCamera_VerticalMove = ctx.inputEntity.isCamera_VerticalMove;
             ctx.cameraEntity.isCamera_HorizonalRound = ctx.inputEntity.isCamera_HorizonalRound;
+            
             ctx.cameraEntity.FollowSet(owner, ctx.inputEntity.MouseAxis, dt);
         }
     }

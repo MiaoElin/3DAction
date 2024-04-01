@@ -11,9 +11,17 @@ namespace Act {
             if (role.moveType == moveType.ByInput) {
                 Vector3 dir = ctx.inputEntity.moveAxis;
                 role.Move(dir, dt);
-                role.Falling(dt);
             }
+        }
+        public static void Falling(RoleEntity role, float dt) {
+            role.Falling(dt);
 
+        }
+
+        public static void Jump(RoleEntity role,bool isJumpKeyDown) {
+            if (role.ally == Ally.Player) {
+                role.Jump(isJumpKeyDown);
+            }
         }
 
 

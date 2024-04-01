@@ -22,6 +22,10 @@ namespace Act {
         // public float 
         public bool isInGround;
 
+        // 跳；
+        public bool isJumpKeyDown;
+        float jumpForce;
+        int jumpTimes;
         public RoleEntity() {
         }
 
@@ -33,7 +37,6 @@ namespace Act {
         }
 
         void OnCollisionStay(Collision other) {
-
         }
 
         void OnCollisionExit(Collision other) {
@@ -69,6 +72,8 @@ namespace Act {
 
             rb = GetComponentInChildren<Rigidbody>();
             rb.velocity = Vector3.zero;
+            jumpForce = 5;
+            jumpTimes = 1;
         }
         public void Set_FaceDir(Vector3 faceDir, float dt) {
 
@@ -173,8 +178,22 @@ namespace Act {
 
         }
 
-        public void Jump() {
+        public void Jump(bool isJumpKeyDown) {
+            if (isInGround && isJumpKeyDown && jumpTimes >= 1) {
+                var vel = rb.velocity;
+                vel.y += jumpForce;
+                rb.velocity = vel;
+                jumpTimes -= 1;
+                isInGround = false;
+            } else {
+                if (isInGround) {
+                    ResetJumpTimes();
+                }
+            }
+        }
 
+        public void ResetJumpTimes() {
+            jumpTimes = 1;
         }
 
         public void Move_To(Vector3 targetPos, float dt) {
