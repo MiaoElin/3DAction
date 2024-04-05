@@ -30,8 +30,37 @@ namespace Act {
         int jumpTimes;
         public RoleEntity() {
         }
-
+        #region Collision
         void OnCollisionEnter(Collision other) {
+            // if (other.gameObject.tag == "Ground") {
+            //     var vel = rb.velocity;
+            //     vel.y = 0;
+            //     rb.velocity = vel;
+            //     ResetJumpTimes();
+            //     isInGround = true;
+            // }
+            // other.gameObject.GetComponent<TowerEntity>();
+        }
+
+        void OnCollisionStay(Collision other) {
+            // if (other.gameObject.tag == "Ground") {
+            //     if (!isInGround) {
+            //         var vel = rb.velocity;
+            //         vel.y = 0;
+            //         rb.velocity = vel;
+            //         ResetJumpTimes();
+            //     }
+            //     isInGround = true;
+            // }
+        }
+
+        void OnCollisionExit(Collision other) {
+            // if (other.gameObject.tag == "Ground") {
+            //     isInGround = false;
+            // }
+        }
+
+        void OnTriggerEnter(Collider other) {
             if (other.gameObject.tag == "Ground") {
                 var vel = rb.velocity;
                 vel.y = 0;
@@ -39,10 +68,9 @@ namespace Act {
                 ResetJumpTimes();
                 isInGround = true;
             }
-            // other.gameObject.GetComponent<TowerEntity>();
         }
 
-        void OnCollisionStay(Collision other) {
+        void OnTriggerStay(Collider other) {
             if (other.gameObject.tag == "Ground") {
                 if (!isInGround) {
                     var vel = rb.velocity;
@@ -54,25 +82,12 @@ namespace Act {
             }
         }
 
-        void OnCollisionExit(Collision other) {
+        void OnTriggerExit(Collider other) {
             if (other.gameObject.tag == "Ground") {
                 isInGround = false;
-                Debug.Log("ishere");
             }
         }
-
-        void OnTriggerEnter(Collider other) {
-
-        }
-
-        void OnTriggerStay(Collider other) {
-
-        }
-
-        void OnTriggerExit(Collider other) {
-
-        }
-
+        #endregion OnTriggerExit
         public void Ctor() {
 
             // Vector3 fwd = Vector3.forward; // (0, 0, 1) ↑
@@ -100,24 +115,6 @@ namespace Act {
                 return;
             }
 
-            // Vector3 startForward;
-            // Vector3 endForward;
-            // endForward = new Vector3(faceDir.x, 0, faceDir.z);
-            // startForward = transform.forward;
-            // if (oldForward != endForward) {
-            //     time = 0;
-            //     duration = 0.1f;
-            // }
-            // if (time <= duration) {
-            //     time += dt;
-            //     float t = time / duration;
-            //     var startRot = Quaternion.LookRotation(startForward);
-            //     var endRot = Quaternion.LookRotation(endForward);
-            //     transform.rotation = Quaternion.Lerp(startRot, endRot, t);
-            // }
-            // // transform.forward = faceDir;
-
-
             // 根据正面进行旋转
             // old forward: (x0, y0, z1)
             // new forward: (moveAxis.x, 0, moveAxis.y)
@@ -126,7 +123,6 @@ namespace Act {
                 startForward = oldForward; // 缓动开始
                 if (startForward == Vector3.zero) {
                     startForward = transform.forward;
-                    Debug.Log(startForward);
                 }
                 endForward = newForward; // 缓动结束
                 time = 0;
@@ -146,7 +142,6 @@ namespace Act {
                 Quaternion endRot = Quaternion.LookRotation(endForward);
                 transform.rotation = Quaternion.Lerp(startRot, endRot, t);
             }
-
 
         }
 
@@ -178,6 +173,7 @@ namespace Act {
             velo.y = y;
             rb.velocity = velo;
             Set_FaceDir(dir, dt);
+            Debug.Log(isInGround);
         }
 
         public void Falling(float dt) {
@@ -195,8 +191,6 @@ namespace Act {
                 jumpTimes -= 1;
                 // isInGround = false;
             }
-            Debug.Log(isInGround);
-            Debug.Log(jumpTimes);
         }
 
         public void ResetJumpTimes() {

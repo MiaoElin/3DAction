@@ -15,13 +15,14 @@ namespace Act {
             transform.forward = forward;
         }
 
-        public void Update_Tick(int hp, Vector3 pos, float headOffset,Vector3 forward) {
+        public void Update_Tick(int hp, Vector3 pos, float headOffset, Vector3 forward) {
             // Hp
             if (hp <= 0) {
                 Destroy(gameObject);
                 return;
             }
-            hpBar.fillAmount = hp / hpMax;
+
+            hpBar.fillAmount = (float)hp / hpMax;
 
             // Pos 
             transform.position = pos + Vector3.up * headOffset;
