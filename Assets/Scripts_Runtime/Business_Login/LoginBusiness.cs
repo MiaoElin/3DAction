@@ -13,5 +13,8 @@ namespace Act {
             Debug.Log("退出游戏");
         }
 
+        public static void Tick(UIContext ctx) {
+            UIApp.Panel_Login_Tick(ctx);
+        }
     }
 }

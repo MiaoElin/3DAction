@@ -18,10 +18,16 @@ MonoBehaviour:
   m_GUID: 808249cd274ad0a4aaf00fd9571e79d1
   m_SerializeEntries:
   - m_GUID: 08c6c26af1b8ba9459e25864a4064849
-    m_Address: Assets/Resource_Runtime/RoleTM_100.asset
+    m_Address: RoleTM_100
     m_ReadOnly: 0
     m_SerializedLabels:
     - RoleTM
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 159556344059c1d468b458d0c4c26baf
+    m_Address: HUD_HpBar
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: caf1cc206c16af04597d10f8bdd112f0, type: 2}

@@ -7,6 +7,8 @@ namespace Act {
         public int entityID;
         public int typeID;
         public Ally ally;
+        public int hp;
+        public int hpMax;
         public moveType moveType;
         public Rigidbody rb;
         Vector3 lastPos;
@@ -31,17 +33,31 @@ namespace Act {
 
         void OnCollisionEnter(Collision other) {
             if (other.gameObject.tag == "Ground") {
+                var vel = rb.velocity;
+                vel.y = 0;
+                rb.velocity = vel;
+                ResetJumpTimes();
                 isInGround = true;
             }
             // other.gameObject.GetComponent<TowerEntity>();
         }
 
         void OnCollisionStay(Collision other) {
+            if (other.gameObject.tag == "Ground") {
+                if (!isInGround) {
+                    var vel = rb.velocity;
+                    vel.y = 0;
+                    rb.velocity = vel;
+                    ResetJumpTimes();
+                }
+                isInGround = true;
+            }
         }
 
         void OnCollisionExit(Collision other) {
             if (other.gameObject.tag == "Ground") {
                 isInGround = false;
+                Debug.Log("ishere");
             }
         }
 
@@ -165,17 +181,10 @@ namespace Act {
         }
 
         public void Falling(float dt) {
-            if (isInGround) {
-                var vel = rb.velocity;
-                vel.y = 0;
-                rb.velocity = vel;
-                return;
-            }
             Vector3 velo = rb.velocity;
             const float G = -9.81f;
             velo.y += G * dt;
             rb.velocity = velo;
-
         }
 
         public void Jump(bool isJumpKeyDown) {
@@ -184,12 +193,10 @@ namespace Act {
                 vel.y += jumpForce;
                 rb.velocity = vel;
                 jumpTimes -= 1;
-                isInGround = false;
-            } else {
-                if (isInGround) {
-                    ResetJumpTimes();
-                }
+                // isInGround = false;
             }
+            Debug.Log(isInGround);
+            Debug.Log(jumpTimes);
         }
 
         public void ResetJumpTimes() {

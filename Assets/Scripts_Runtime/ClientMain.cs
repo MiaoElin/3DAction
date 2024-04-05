@@ -6,7 +6,8 @@ using UnityEngine;
 namespace Act {
     public class ClientMain : MonoBehaviour {
         [SerializeField] Camera mainCamera;
-        [SerializeField] Canvas panelCavas;
+        [SerializeField] Canvas screenCanvas;
+        [SerializeField] Canvas worldCanvas;
         MainContext ctx;
         float restTime;
 
@@ -16,7 +17,7 @@ namespace Act {
             ctx = new MainContext();
 
             // Inject
-            ctx.Inject(panelCavas, mainCamera);
+            ctx.Inject(screenCanvas,worldCanvas, mainCamera);
 
             // Binding
             BindEvent();
@@ -63,6 +64,7 @@ namespace Act {
             float dt = Time.deltaTime;
 
             // Tick
+            LoginBusiness.Tick(ctx.uICtx);
             GameBusiness.Tick(ctx.gameCtx, dt);
 
             // FixedTick

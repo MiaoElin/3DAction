@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeID: 100
   moveSpeed: 10
+  hpMax: 20
   moveType: 2

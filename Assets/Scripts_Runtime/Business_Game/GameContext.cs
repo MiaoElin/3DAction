@@ -4,6 +4,7 @@ namespace Act {
         public inputEntity inputEntity;
         public TemplateContext tempCtx;
         public InfraAssetContext infraCtx;
+        public UIContext uICtx;
         public IDService iDService;
         public RoleRepo roleRepo;
         public GameEntity gameEntity;
@@ -17,10 +18,11 @@ namespace Act {
             cameraEntity = new CameraEntity();
             playerEntity = new PlayerEntity();
         }
-        public void Inject(inputEntity inputEntity, TemplateContext tempCtx, InfraAssetContext infraCtx, Camera camera) {
+        public void Inject(inputEntity inputEntity, TemplateContext tempCtx, InfraAssetContext infraCtx, UIContext uICtx, Camera camera) {
             this.inputEntity = inputEntity;
             this.tempCtx = tempCtx;
             this.infraCtx = infraCtx;
+            this.uICtx = uICtx;
             cameraEntity.camera = camera;
             cameraEntity.Ctor();
         }

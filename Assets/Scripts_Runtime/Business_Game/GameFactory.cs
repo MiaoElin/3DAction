@@ -14,6 +14,8 @@ namespace Act {
             role.typeID = typeID;
             role.entityID = ctx.iDService.RoleRecord++;
             role.moveSpeed = tM.moveSpeed;
+            role.hp=tM.hpMax;
+            role.hpMax=tM.hpMax;
             role.moveType = tM.moveType;
             return role;
         }

@@ -85,10 +85,10 @@ namespace Act {
             camera.transform.forward = -offset.normalized;
             cameraPos = owner.Get_Pos() + offset;
             camera.transform.position = cameraPos;
+        }
 
-
-
-
+        public Vector3 GetForward() {
+            return camera.transform.forward;
         }
     }
 }

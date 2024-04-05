@@ -4,6 +4,7 @@ namespace Act {
     public class RoleTM : ScriptableObject {
         public int typeID;
         public float moveSpeed;
+        public int hpMax;
         public moveType moveType;
     }
 

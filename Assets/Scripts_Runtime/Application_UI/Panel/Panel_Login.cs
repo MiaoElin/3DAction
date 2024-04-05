@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 namespace Act.UI {
     public class Panel_Login : MonoBehaviour {
@@ -15,6 +16,7 @@ namespace Act.UI {
         public Action OnKeyboardBindHandle;
         public Action OnJoystickBindHandle;
         public Action OnExitHandle;
+        [SerializeField] VideoPlayer videoPlayer;
         public void Ctor() {
             btn_Start.onClick.AddListener(() => {
                 OnStartHandle.Invoke();
@@ -22,6 +24,10 @@ namespace Act.UI {
             btn_Exit.onClick.AddListener(() => {
                 OnExitHandle.Invoke();
             });
+        }
+
+        public void VideoPlay() {
+            videoPlayer.Play();
         }
     }
 }

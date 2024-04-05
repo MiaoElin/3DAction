@@ -4,30 +4,36 @@
   1.与角色保持固定的焦距(通过鼠标滚轮可以改变)
   2.按住鼠标左键,通过改变鼠标的屏幕坐标,以role为中心点 来改变相机的rotation的x和y, x改变Vertical方向的角度,y改变horizontal方向的角度。
   3.当rotation的x为0度时,会记录此刻的焦距,继续减小,会缩短焦距,(直到相机变到人物脚底), 这时候加大x的角度,会重新拉大焦距,直到跟记录的焦距一致,这时候角度从0开始变大,这个角度最大为90.
-Role
- -跳
- -冲刺
- -
 
-3C
+
+==== BUG ====
+- 起跳模型卡住后一直判定为不在地上,不能再跳
+
+
+==== 3C ====
 Controller 输入控制
 - 键盘
 - 鼠标
 - 手柄
 - 触屏(UI)
+
 Character 角色
 - 物理(碰撞Collision/交叉Trigger/Physics.Overlap/Physics.CastBox)
 √- 移动
-- 跳
+√- 跳
 - 模型(Mesh/贴图/Shader/材质) Tech Artist
 - 动画(Animator)
+
 Camera 相机
 √- 跟随
 √- 看向/旋转
 - 震屏
 
-UI
+==== UI ====
 - 屏幕空间
+ - Panel_Login
+   - 添加一段视频做背景
+ - panel_Setting  
 - 世界空间
 
 美术
