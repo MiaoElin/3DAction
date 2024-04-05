@@ -31,7 +31,7 @@ namespace Act {
         public static void Panel_Login_Tick(UIContext ctx) {
             var name = typeof(Panel_Login).Name;
             var panel = ctx.openedUI_TryGet<Panel_Login>();
-            panel?.VideoPlay();
+            panel?.VideoPlay_Tick();
         }
 
         // Hud_HpBar

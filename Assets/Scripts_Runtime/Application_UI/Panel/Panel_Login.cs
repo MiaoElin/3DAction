@@ -17,6 +17,7 @@ namespace Act.UI {
         public Action OnJoystickBindHandle;
         public Action OnExitHandle;
         [SerializeField] VideoPlayer videoPlayer;
+        [SerializeField] RawImage rawImage;
         public void Ctor() {
             btn_Start.onClick.AddListener(() => {
                 OnStartHandle.Invoke();
@@ -26,7 +27,11 @@ namespace Act.UI {
             });
         }
 
-        public void VideoPlay() {
+        public void VideoPlay_Tick() {
+            Texture tex = videoPlayer.texture;
+            if (tex != null) {
+                rawImage.texture = tex;
+            }
             videoPlayer.Play();
         }
     }
