@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 69b215cca4a75f747a2eb493f3b9c9ad
   m_SerializeEntries:
-  - m_GUID: e8fd7e9fa7ca0ba4eb2d3cec772ccf4f
-    m_Address: Assets/Resource_Runtime/Template/Role/Role.prefab
+  - m_GUID: bf9d9f1cbcfd8354f976a462e797e167
+    m_Address: RoleEntity
     m_ReadOnly: 0
     m_SerializedLabels:
     - Entities

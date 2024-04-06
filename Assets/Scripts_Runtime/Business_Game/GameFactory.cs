@@ -6,7 +6,7 @@ namespace Act {
             if (!has) {
                 Debug.Log($"Factory.CreateRole:{typeID} not found");
             }
-            ctx.infraCtx.Entity_Tryget("Role", out GameObject prefab);
+            ctx.infraCtx.Entity_Tryget(typeof(RoleEntity).Name, out GameObject prefab);
             var role = GameObject.Instantiate(prefab).GetComponent<RoleEntity>();
             role.Ctor();
             role.Set_Pos(pos);

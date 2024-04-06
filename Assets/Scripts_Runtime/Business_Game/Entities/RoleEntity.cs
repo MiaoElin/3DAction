@@ -11,6 +11,8 @@ namespace Act {
         public int hpMax;
         public moveType moveType;
         public Rigidbody rb;
+        public Animator animator;
+
         Vector3 lastPos;
 
         Vector3 oldForward;
@@ -173,7 +175,11 @@ namespace Act {
             velo.y = y;
             rb.velocity = velo;
             Set_FaceDir(dir, dt);
-            Debug.Log(isInGround);
+            if (dir != Vector3.zero) {
+                animator.SetFloat("MoveSpeed", rb.velocity.magnitude);
+            } else {
+                animator.SetFloat("MoveSpeed", 0);
+            }
         }
 
         public void Falling(float dt) {
