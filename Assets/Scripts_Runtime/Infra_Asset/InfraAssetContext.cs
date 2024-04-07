@@ -1,9 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Act {
     public class InfraAssetContext {
         Dictionary<string, GameObject> entityDict;
+        public AsyncOperationHandle entityPtr;
+
         public InfraAssetContext() {
             entityDict = new Dictionary<string, GameObject>();
 

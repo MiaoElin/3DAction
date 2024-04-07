@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Act.UI;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Act {
 
@@ -11,6 +12,7 @@ namespace Act {
         public UIEventCenter uIEvent;
         public Canvas screenCanvas;
         public Canvas worldCanvas;
+        public  AsyncOperationHandle uiPtr;
 
         public UIContext() {
             uIDict = new Dictionary<string, GameObject>();

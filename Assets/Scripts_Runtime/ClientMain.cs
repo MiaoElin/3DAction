@@ -10,14 +10,17 @@ namespace Act {
         [SerializeField] Canvas worldCanvas;
         MainContext ctx;
         float restTime;
+        bool isTearDown;
 
         // Start is called before the first frame update
         void Start() {
 
+            isTearDown = false;
+
             ctx = new MainContext();
 
             // Inject
-            ctx.Inject(screenCanvas,worldCanvas, mainCamera);
+            ctx.Inject(screenCanvas, worldCanvas, mainCamera);
 
             // Binding
             BindEvent();
@@ -104,6 +107,29 @@ namespace Act {
             // Auto Simulate
             // Physics.Simulate(dt);
         }
+
+        void OnApplicationQuit() {
+            Teardown();
+        }
+
+        void OnDestory() {
+            Teardown();
+        }
+
+        void Teardown() {
+            if (isTearDown) {
+                return;
+            }
+            isTearDown = true;
+            Unload();
+        }
+
+        private void Unload() {
+            InfraAsset.Unload(ctx.infraCtx);
+            UIApp.Unload(ctx.uICtx);
+            InfraTemplate.Undoad(ctx.tempCtx);
+        }
+
     }
 }
 

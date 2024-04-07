@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
 namespace Act {
     public class TemplateContext {
         Dictionary<int, RoleTM> roleTMs;
+        public AsyncOperationHandle ptr;
         public TemplateContext() {
             roleTMs = new Dictionary<int, RoleTM>();
         }

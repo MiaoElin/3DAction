@@ -6,12 +6,20 @@ using Act.UI;
 namespace Act {
     public static class UIApp {
         public static void LoadAll(UIContext ctx) {
-            var list = Addressables.LoadAssetsAsync<GameObject>("UI", null).WaitForCompletion();
+            var ptr = Addressables.LoadAssetsAsync<GameObject>("UI", null);
+            var list = ptr.WaitForCompletion();
             foreach (var ui in list) {
                 ctx.UI_Add(ui.name, ui);
+            }
+            ctx.uiPtr = ptr;
+        }
 
+        public static void Unload(UIContext ctx) {
+            if (ctx.uiPtr.IsValid()) {
+                Addressables.Release(ctx.uiPtr);
             }
         }
+
         public static void Panel_Login_Open(UIContext ctx) {
             var panel = UIFactory.UI_Create<Panel_Login>(ctx);
             panel.Ctor();
@@ -39,8 +47,8 @@ namespace Act {
             HUD_HpBarDomain.Open(ctx, id, hpMax);
         }
 
-        public static void HUD_HpBar_Update(UIContext ctx, int id, int hp, Vector3 rolePos, float headOffset,Vector3 forward) {
-            HUD_HpBarDomain.Update_Tick(ctx, id, hp, rolePos, headOffset,forward);
+        public static void HUD_HpBar_Update(UIContext ctx, int id, int hp, Vector3 rolePos, float headOffset, Vector3 forward) {
+            HUD_HpBarDomain.Update_Tick(ctx, id, hp, rolePos, headOffset, forward);
         }
     }
 }
