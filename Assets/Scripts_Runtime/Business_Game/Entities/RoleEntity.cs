@@ -25,6 +25,7 @@ namespace Act {
         public float moveSpeed;
         // public float 
         public bool isInGround;
+        public bool firtTimeInGround;
 
         // 跳；
         public bool isJumpKeyDown;
@@ -107,6 +108,7 @@ namespace Act {
             rb.velocity = Vector3.zero;
             jumpForce = 5;
             jumpTimes = 1;
+            isInGround = false;
         }
         public void Set_FaceDir(Vector3 faceDir, float dt) {
 
@@ -151,19 +153,24 @@ namespace Act {
             GUILayout.Label("Angular: " + rb.angularVelocity);
         }
 
-
+        // === SetPos ===
         public void Set_Pos(Vector3 pos) {
             transform.position = pos;
         }
+
         public Vector3 Get_Pos() {
             return transform.position;
         }
+
         public Vector3 Get_LastPos() {
             return lastPos;
         }
+
         public void Set_lastPos(Vector3 pos) {
             lastPos = pos;
         }
+
+        // Move
         public void Move(Vector3 dir, float dt) {
             // if (dir == Vector3.zero) {
             //     rb.velocity = new Vector3(0, rb.velocity.y + Physics.gravity.y * dt, 0);
@@ -175,32 +182,8 @@ namespace Act {
             velo.y = y;
             rb.velocity = velo;
             Set_FaceDir(dir, dt);
-            if (dir != Vector3.zero) {
-                animator.SetFloat("MoveSpeed", rb.velocity.magnitude);
-            } else {
-                animator.SetFloat("MoveSpeed", 0);
-            }
-        }
-
-        public void Falling(float dt) {
-            Vector3 velo = rb.velocity;
-            const float G = -9.81f;
-            velo.y += G * dt;
-            rb.velocity = velo;
-        }
-
-        public void Jump(bool isJumpKeyDown) {
-            if (isInGround && isJumpKeyDown && jumpTimes >= 1) {
-                var vel = rb.velocity;
-                vel.y += jumpForce;
-                rb.velocity = vel;
-                jumpTimes -= 1;
-                // isInGround = false;
-            }
-        }
-
-        public void ResetJumpTimes() {
-            jumpTimes = 1;
+            Anim_Run(dir);
+            Debug.Log(isInGround + " " + jumpTimes);
         }
 
         public void Move_To(Vector3 targetPos, float dt) {
@@ -215,6 +198,68 @@ namespace Act {
                 return;
             }
             rb.velocity = dir.normalized * moveSpeed * dt;
+        }
+
+        // === Falling ===
+        public void Falling(float dt) {
+            if (isInGround) {
+                return;
+            }
+            Vector3 velo = rb.velocity;
+            const float G = -9.81f;
+            velo.y += G * dt;
+            rb.velocity = velo;
+            Anim_JumpAir();
+        }
+
+        // === Jump ===
+        public void Jump(bool isJumpKeyDown) {
+            if (isInGround && isJumpKeyDown && jumpTimes >= 1) {
+                var vel = rb.velocity;
+                vel.y += jumpForce;
+                rb.velocity = vel;
+                jumpTimes -= 1;
+                // isInGround = false;
+                Anim_JumpStart();
+            }
+        }
+
+        public void ResetJumpTimes() {
+            jumpTimes = 1;
+            Anim_JumpEnd();
+        }
+
+        // === Animator ===
+        // Run
+        public void Anim_Run(Vector3 dir) {
+            if (dir != Vector3.zero) {
+                animator.SetFloat("F_MoveSpeed", rb.velocity.magnitude);
+            } else {
+                animator.SetFloat("F_MoveSpeed", 0);
+            }
+        }
+
+        // Attack1
+        public void Anim_Attack1() {
+            animator.SetTrigger("T_Attack1");
+        }
+
+        public void Anim_JumpStart() {
+            animator.SetTrigger("T_JumpStart");
+        }
+
+        public void Anim_JumpAir() {
+            // animator.Play("JumpAir_Bow");
+            animator.SetTrigger("T_JumpAir");
+        }
+
+        public void Anim_JumpEnd() {
+            // animator.SetTrigger("T_JumpEnd");
+            // animator.CrossFade("T_JumpEnd",0,0);
+            animator.ResetTrigger("T_JumpAir");
+            animator.Play("JumpEnd_Bow");
+            // animator.SetBool("JumpEnd_Bow", true);
+            Debug.Log("2");
         }
     }
 }
