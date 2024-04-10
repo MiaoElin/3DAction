@@ -183,7 +183,6 @@ namespace Act {
             rb.velocity = velo;
             Set_FaceDir(dir, dt);
             Anim_Run(dir);
-            Debug.Log(isInGround + " " + jumpTimes);
         }
 
         public void Move_To(Vector3 targetPos, float dt) {

@@ -127,7 +127,7 @@ namespace Act {
         private void Unload() {
             InfraAsset.Unload(ctx.infraCtx);
             UIApp.Unload(ctx.uICtx);
-            InfraTemplate.Undoad(ctx.tempCtx);
+            InfraTemplate.Unload(ctx.tempCtx);
         }
 
     }

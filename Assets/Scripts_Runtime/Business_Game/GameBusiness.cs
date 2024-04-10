@@ -4,8 +4,17 @@ using UnityEngine;
 namespace Act {
     public static class GameBusiness {
         public static void EnterGame(GameContext ctx) {
+            // 生成owner
             var owner = RoleDomain.Spawn(ctx, 100, new Vector3(0, 6, 0), Ally.Player);
             ctx.playerEntity.OwnerEntityID = owner.entityID;
+            
+            // 生成LootEntity
+            LootDomain.Spawn(ctx, 100, new Vector3(1, 0, 0));
+            LootDomain.Spawn(ctx, 100, new Vector3(1, 0, 1));
+            LootDomain.Spawn(ctx, 101, new Vector3(2, 0, 2));
+            LootDomain.Spawn(ctx, 101, new Vector3(2, 0, 1));
+            
+            //  进入游戏循环主体
             var game = ctx.gameEntity;
             game.status = GameStatus.InGame;
         }

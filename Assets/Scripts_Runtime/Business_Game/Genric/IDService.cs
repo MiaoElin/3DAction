@@ -1,8 +1,10 @@
 namespace Act {
     public class IDService {
-        public int RoleRecord;
+        public int roleRecord;
+        public int lootRecord;
         public IDService() {
-            RoleRecord = 0;
+            roleRecord = 0;
+            lootRecord = 0;
         }
     }
 }

@@ -1,12 +1,19 @@
 using UnityEngine;
 namespace Act {
     public class GameContext {
-        public inputEntity inputEntity;
+        // === Context ===
         public TemplateContext tempCtx;
         public InfraAssetContext infraCtx;
         public UIContext uICtx;
+
         public IDService iDService;
+
+        // === Repository ===
         public RoleRepo roleRepo;
+        public LootRepo lootRepo;
+
+        // === Entity ===
+        public inputEntity inputEntity;
         public GameEntity gameEntity;
         public CameraEntity cameraEntity;
         public PlayerEntity playerEntity;
@@ -14,6 +21,7 @@ namespace Act {
         public GameContext() {
             iDService = new IDService();
             roleRepo = new RoleRepo();
+            lootRepo = new LootRepo();
             gameEntity = new GameEntity();
             cameraEntity = new CameraEntity();
             playerEntity = new PlayerEntity();

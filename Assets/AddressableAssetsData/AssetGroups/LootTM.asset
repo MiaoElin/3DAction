@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Entities
+  m_Name: LootTM
   m_EditorClassIdentifier: 
-  m_GroupName: Entities
+  m_GroupName: LootTM
   m_Data:
     m_SerializedData: []
-  m_GUID: 69b215cca4a75f747a2eb493f3b9c9ad
+  m_GUID: 4e93ae03db1ba96459a5506b788d3471
   m_SerializeEntries:
-  - m_GUID: bf9d9f1cbcfd8354f976a462e797e167
-    m_Address: RoleEntity
+  - m_GUID: e36e261de3853704a8084792f395dcf4
+    m_Address: LootTM_101
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Entities
+    - LootTM
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3e189d8e45a54a2458c2d4e9ee1733fc
-    m_Address: LootEntity
+  - m_GUID: 7e1edff0e14482d43b3e4e4a988436c5
+    m_Address: LootTM_100
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Entities
+    - LootTM
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: caf1cc206c16af04597d10f8bdd112f0, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 6d39784e14e6d3d40a4debbfa747de1d, type: 2}
-    - {fileID: 11400000, guid: 41c5bbbfe26656746a63c312ac9238d7, type: 2}
+    - {fileID: 11400000, guid: 0475e7c7c3f20dc429aa9a26e4b8c049, type: 2}
+    - {fileID: 11400000, guid: 3f8b3d288b2dfe04fa37f51a71104776, type: 2}

@@ -10,16 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: HUD
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: HUD
   m_Data:
     m_SerializedData: []
-  m_GUID: 808249cd274ad0a4aaf00fd9571e79d1
-  m_SerializeEntries: []
+  m_GUID: 4a7ddb92d193e7d4ca68db6246eeea80
+  m_SerializeEntries:
+  - m_GUID: 159556344059c1d468b458d0c4c26baf
+    m_Address: HUD_HpBar
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: caf1cc206c16af04597d10f8bdd112f0, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 3f536eb530888b9469375c9625288683, type: 2}
-    - {fileID: 11400000, guid: 84473f6c2d8edb741b5ca54616adcc84, type: 2}
+    - {fileID: 11400000, guid: 1815fe64a6630f647bd5e4cb1c04f9fe, type: 2}
+    - {fileID: 11400000, guid: 07e4837ddd23076498fa8e015975c3b6, type: 2}

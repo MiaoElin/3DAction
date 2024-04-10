@@ -3398,8 +3398,9 @@ MonoBehaviour:
   moveType: 2
   rb: {fileID: 6197034294604592309}
   animator: {fileID: 9037006276529770057}
-  moveSpeed: 10
+  moveSpeed: 5
   isInGround: 1
+  firtTimeInGround: 0
   isJumpKeyDown: 0
 --- !u!54 &6197034294604592309
 Rigidbody:

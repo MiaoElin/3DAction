@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f04be60754d3e7a4181bfb48bd6cd9d8, type: 3}
-  m_Name: RoleTM_100
+  m_Script: {fileID: 11500000, guid: c2437c0a87ce57c4eb9a709f2bffb3b5, type: 3}
+  m_Name: LootTM_101
   m_EditorClassIdentifier: 
-  typeID: 100
-  moveSpeed: 5
-  hpMax: 20
-  moveType: 2
+  typeID: 101
+  mesh: {fileID: 5902438668197411763, guid: db6cdcd0822eb344496b961a12b4d6bd, type: 3}
+  material: {fileID: 2100000, guid: 0799a1e95665ef14f8fe2cbcd4ba3dc4, type: 2}

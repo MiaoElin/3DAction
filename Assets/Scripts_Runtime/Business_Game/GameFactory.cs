@@ -12,12 +12,28 @@ namespace Act {
             role.Set_Pos(pos);
             role.ally = ally;
             role.typeID = typeID;
-            role.entityID = ctx.iDService.RoleRecord++;
+            role.entityID = ctx.iDService.roleRecord++;
             role.moveSpeed = tM.moveSpeed;
-            role.hp=tM.hpMax;
-            role.hpMax=tM.hpMax;
+            role.hp = tM.hpMax;
+            role.hpMax = tM.hpMax;
             role.moveType = tM.moveType;
             return role;
+        }
+
+        public static LootEntity CreateLoot(GameContext ctx, Vector3 pos, int typeID) {
+            bool has = ctx.tempCtx.LootTM_Tryget(typeID, out var tM);
+            if (!has) {
+                Debug.Log($"Factory.CreateLoot:{typeID} not found");
+            }
+            ctx.infraCtx.Entity_Tryget(typeof(LootEntity).Name, out GameObject prefab);
+            var loot = GameObject.Instantiate(prefab).GetComponent<LootEntity>();
+            loot.Ctor();
+            loot.SetPos(pos);
+            loot.typeId = typeID;
+            loot.id = ctx.iDService.lootRecord++;
+            loot.meshFilter.mesh = tM.mesh;
+            loot.mr.material = tM.material;
+            return loot;
         }
     }
 }
