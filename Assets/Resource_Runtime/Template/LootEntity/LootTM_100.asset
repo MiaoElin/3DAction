@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: LootTM_100
   m_EditorClassIdentifier: 
   typeID: 100
+  lootName: "\u7D2B\u8611\u83C7"
   mesh: {fileID: -1105425855394590978, guid: 7d8aca6e7926e3645934f9739966d7c8, type: 3}
   material: {fileID: 2100000, guid: 0799a1e95665ef14f8fe2cbcd4ba3dc4, type: 2}

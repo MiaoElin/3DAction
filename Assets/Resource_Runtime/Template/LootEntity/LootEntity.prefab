@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeId: 0
+  lootName: 
   id: 0
   mr: {fileID: 2424530674589195661}
   meshFilter: {fileID: 1752975733214729910}

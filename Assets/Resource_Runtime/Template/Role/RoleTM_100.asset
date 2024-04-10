@@ -16,3 +16,4 @@ MonoBehaviour:
   moveSpeed: 5
   hpMax: 20
   moveType: 2
+  searchRange: 5

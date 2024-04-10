@@ -6,6 +6,8 @@ namespace Act {
         public float moveSpeed;
         public int hpMax;
         public moveType moveType;
+        public float searchRange;
+
     }
 
 }

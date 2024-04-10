@@ -8,17 +8,20 @@ namespace Act {
     public class UIContext {
         Dictionary<string, GameObject> uIDict;
         Dictionary<string, MonoBehaviour> openedUIDict;
+
         Dictionary<int, HUD_HpBar> hpBarDic; // HpBar有很多，要跟role的entityid对应
+        Dictionary<int, Panel_LootSignal> lootSignalDic; // 角色附近的loot都会显示 与lootEntity对应唯一id；
         public UIEventCenter uIEvent;
         public Canvas screenCanvas;
         public Canvas worldCanvas;
-        public  AsyncOperationHandle uiPtr;
+        public AsyncOperationHandle uiPtr;
 
         public UIContext() {
             uIDict = new Dictionary<string, GameObject>();
             openedUIDict = new Dictionary<string, MonoBehaviour>();
             uIEvent = new UIEventCenter();
             hpBarDic = new Dictionary<int, HUD_HpBar>();
+            lootSignalDic = new Dictionary<int, Panel_LootSignal>();
         }
         public void Inject(Canvas screenCanvas, Canvas worldCanvas) {
             this.screenCanvas = screenCanvas;
@@ -47,6 +50,15 @@ namespace Act {
             openedUIDict.Remove(name);
         }
 
+        public T openedUI_TryGet<T>() where T : MonoBehaviour {
+            openedUIDict.TryGetValue(typeof(T).Name, out MonoBehaviour comp);
+            if (comp == null) {
+                return null;
+            }
+            var panel = comp as T;
+            return panel;
+        }
+
         // hpBarDic
         public void HpBarDic_Add(int id, HUD_HpBar hpBar) {
             hpBarDic.Add(id, hpBar);
@@ -60,14 +72,18 @@ namespace Act {
             return hpBarDic.TryGetValue(id, out hUD_HpBar);
         }
 
-
-        public T openedUI_TryGet<T>() where T : MonoBehaviour {
-            openedUIDict.TryGetValue(typeof(T).Name, out MonoBehaviour comp);
-            if (comp == null) {
-                return null;
-            }
-            var panel = comp as T;
-            return panel;
+        // LootSignalDic
+        public void LootSignal_Add(int id, Panel_LootSignal lootSignal) {
+            lootSignalDic.Add(id, lootSignal);
         }
+
+        public void LootSignal_Remove(int id) {
+            lootSignalDic.Remove(id);
+        }
+
+        public bool LootSignal_Tryget(int id, out Panel_LootSignal lootSignal) {
+            return lootSignalDic.TryGetValue(id, out lootSignal);
+        }
+
     }
 }

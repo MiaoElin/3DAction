@@ -30,5 +30,8 @@ namespace Act {
             UIApp.HUD_HpBar_Update(ctx.uICtx, role.entityID, role.hp, role.Get_Pos(), GameConst.ROLE_HEADOFFSET, ctx.cameraEntity.GetForward());
         }
 
+        // 
+
+
     }
 }

@@ -29,6 +29,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - UI
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e6274218777405b42936f36b43169ce3
+    m_Address: Assets/Resource_Runtime/Template/Panel/Panel_LootSignal.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - UI
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: caf1cc206c16af04597d10f8bdd112f0, type: 2}
   m_SchemaSet:

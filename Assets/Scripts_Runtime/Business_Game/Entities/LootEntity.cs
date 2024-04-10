@@ -5,6 +5,7 @@ namespace Act {
 
     public class LootEntity : MonoBehaviour {
         public int typeId;
+        public string lootName;
         public int id;
         [SerializeField] public MeshRenderer mr;
         [SerializeField] public MeshFilter meshFilter;
@@ -14,6 +15,10 @@ namespace Act {
 
         internal void SetPos(Vector3 pos) {
             transform.position = pos;
+        }
+
+        public Vector3 GetPos() {
+            return transform.position;
         }
     }
 }

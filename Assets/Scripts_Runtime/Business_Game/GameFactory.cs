@@ -17,6 +17,7 @@ namespace Act {
             role.hp = tM.hpMax;
             role.hpMax = tM.hpMax;
             role.moveType = tM.moveType;
+            role.searchRange = tM.searchRange;
             return role;
         }
 
@@ -30,6 +31,7 @@ namespace Act {
             loot.Ctor();
             loot.SetPos(pos);
             loot.typeId = typeID;
+            loot.lootName = tM.lootName;
             loot.id = ctx.iDService.lootRecord++;
             loot.meshFilter.mesh = tM.mesh;
             loot.mr.material = tM.material;

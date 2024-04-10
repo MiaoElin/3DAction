@@ -50,5 +50,18 @@ namespace Act {
         public static void HUD_HpBar_Update(UIContext ctx, int id, int hp, Vector3 rolePos, float headOffset, Vector3 forward) {
             HUD_HpBarDomain.Update_Tick(ctx, id, hp, rolePos, headOffset, forward);
         }
+
+        // panel_LootSignal
+        public static void Panel_LootSignal_Open(UIContext ctx, int id, string lootName, Vector3 worldPos) {
+            Panel_LootSignalDomain.Open(ctx, id, lootName, worldPos);
+        }
+
+        public static void Panel_LootSignal_Hide(UIContext ctx, int id) {
+            Panel_LootSignalDomain.Hide(ctx, id);
+        }
+        
+        public static void Panel_LootSignal_Close(UIContext ctx, int id) {
+            Panel_LootSignalDomain.Close(ctx, id);
+        }
     }
 }

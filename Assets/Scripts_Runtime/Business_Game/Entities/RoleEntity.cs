@@ -13,6 +13,9 @@ namespace Act {
         public Rigidbody rb;
         public Animator animator;
 
+        public float searchRange;
+
+
         Vector3 lastPos;
 
         Vector3 oldForward;

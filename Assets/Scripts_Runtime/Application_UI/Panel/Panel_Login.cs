@@ -28,10 +28,10 @@ namespace Act.UI {
         }
 
         public void VideoPlay_Tick() {
-            // Texture tex = videoPlayer.texture;
-            // if (tex != null) {
-            //     rawImage.texture = tex;
-            // }
+            Texture tex = videoPlayer.texture;
+            if (tex != null) {
+                rawImage.texture = tex;
+            }
             videoPlayer.Play();
         }
     }
