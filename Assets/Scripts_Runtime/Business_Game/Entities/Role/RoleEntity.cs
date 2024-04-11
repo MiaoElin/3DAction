@@ -34,8 +34,12 @@ namespace Act {
         public bool isJumpKeyDown;
         float jumpForce;
         int jumpTimes;
+
+        public StuffComponent stuffCom;
         public RoleEntity() {
+            stuffCom = new StuffComponent();
         }
+
         #region Collision
         void OnCollisionEnter(Collision other) {
             // if (other.gameObject.tag == "Ground") {
@@ -261,7 +265,6 @@ namespace Act {
             animator.ResetTrigger("T_JumpAir");
             animator.Play("JumpEnd_Bow");
             // animator.SetBool("JumpEnd_Bow", true);
-            Debug.Log("2");
         }
     }
 }

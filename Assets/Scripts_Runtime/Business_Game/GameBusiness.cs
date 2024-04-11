@@ -45,13 +45,8 @@ namespace Act {
             // Camera
             ctx.cameraEntity.Tick(ctx.inputEntity.mouseWheel, fixdt);
 
-            // loot
-            int lootLen = ctx.lootRepo.TakeAll(out var loots);
-            for (int i = 0; i < lootLen; i++) {
-                var loot = loots[i];
-                LootDomain.ShowPanel_LootSignal(ctx, loot, owner.Get_Pos(), owner.searchRange);
-            }
-
+            // Pick loot
+            RoleDomain.PickLootTick(ctx, owner);
         }
 
         public static void LateTcik(GameContext ctx, float dt) {

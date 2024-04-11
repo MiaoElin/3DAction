@@ -6,6 +6,7 @@ namespace Act {
     public class LootTM : ScriptableObject {
         public int typeID;
         public string lootName;
+        public int stuffCount;
         public Mesh mesh;
         public Material material;
     }

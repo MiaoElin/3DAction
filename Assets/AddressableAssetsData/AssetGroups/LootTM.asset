@@ -18,13 +18,7 @@ MonoBehaviour:
   m_GUID: 4e93ae03db1ba96459a5506b788d3471
   m_SerializeEntries:
   - m_GUID: e36e261de3853704a8084792f395dcf4
-    m_Address: LootTM_101
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - LootTM
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7e1edff0e14482d43b3e4e4a988436c5
-    m_Address: LootTM_100
+    m_Address: Assets/Resource_Runtime/Template/LootEntity/LootTM_101.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - LootTM

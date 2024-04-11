@@ -29,6 +29,6 @@ namespace Act {
             allloot = tempArray;
             return loots.Count;
         }
-
+        
     }
 }

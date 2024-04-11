@@ -7,6 +7,7 @@ namespace Act {
                 panel = UIFactory.UI_Create<Panel_Bag>(ctx);
                 panel.Ctor();
             }
+            panel.Init();
 
         }
     }

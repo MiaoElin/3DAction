@@ -4,9 +4,10 @@ using UnityEngine;
 namespace Act {
 
     public class LootEntity : MonoBehaviour {
-        public int typeId;
+        public int typeID;
         public string lootName;
         public int id;
+        public int stuffCount;
         [SerializeField] public MeshRenderer mr;
         [SerializeField] public MeshFilter meshFilter;
 
@@ -20,5 +21,10 @@ namespace Act {
         public Vector3 GetPos() {
             return transform.position;
         }
+
+        public void Destroy() {
+            Destroy(gameObject);
+        }
     }
+
 }

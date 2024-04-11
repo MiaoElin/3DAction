@@ -30,12 +30,29 @@ namespace Act {
             var loot = GameObject.Instantiate(prefab).GetComponent<LootEntity>();
             loot.Ctor();
             loot.SetPos(pos);
-            loot.typeId = typeID;
+            loot.typeID = typeID;
             loot.lootName = tM.lootName;
+            loot.stuffCount = tM.stuffCount;
             loot.id = ctx.iDService.lootRecord++;
             loot.meshFilter.mesh = tM.mesh;
             loot.mr.material = tM.material;
             return loot;
         }
+
+        public static StuffModel CreateStuffModel(GameContext ctx, int typeID, int stuffCount) {
+            ctx.tempCtx.StuffTM_Tryget(typeID, out StuffTM tm);
+            StuffModel stuff = new StuffModel();
+            stuff.count = stuffCount;
+            stuff.typeID = tm.typeID;
+            stuff.id = ctx.iDService.stuffRecord++;
+            stuff.sprite = tm.sprite;
+            stuff.maxCount = tm.maxCount;
+            stuff.isReHp = tm.isReHp;
+            stuff.reHp = tm.reHp;
+            stuff.isReVIT = tm.isReVIT;
+            stuff.reVITPercent = tm.reVITPercent;
+            return stuff;
+        }
+
     }
 }

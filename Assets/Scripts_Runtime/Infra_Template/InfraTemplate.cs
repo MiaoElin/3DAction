@@ -19,6 +19,14 @@ namespace Act {
                     ctx.LootTM_Add(tm);
                 }
             }
+            {
+                var ptr = Addressables.LoadAssetsAsync<StuffTM>("StuffTM", null);
+                ctx.stuffPtr = ptr;
+                var list = ptr.WaitForCompletion();
+                foreach (var tm in list) {
+                    ctx.StuffTM_Add(tm);
+                }
+            }
         }
 
         public static void Unload(TemplateContext ctx) {
@@ -27,6 +35,9 @@ namespace Act {
             }
             if (ctx.lootPtr.IsValid()) {
                 Addressables.Release(ctx.lootPtr);
+            }
+            if (ctx.stuffPtr.IsValid()) {
+                Addressables.Release(ctx.stuffPtr);
             }
         }
     }

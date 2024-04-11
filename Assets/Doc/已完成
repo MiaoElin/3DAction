@@ -13,3 +13,8 @@
 - 学习用代码控制animator
 - 学习资源释放
 
+Character 角色
+- 物理(碰撞Collision/交叉Trigger/Physics.Overlap/Physics.CastBox)
+√- 移动
+√- 跳
+

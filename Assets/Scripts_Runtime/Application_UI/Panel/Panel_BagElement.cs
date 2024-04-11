@@ -4,8 +4,9 @@ using UnityEngine.UI;
 
 namespace Act {
 
-    public class Panle_BagElement {
+    public class Panel_BagElement {
         public int id;
+        public int count;
         [SerializeField] Image image;
         [SerializeField] Button btn;
         Action OnAddHandle;
@@ -16,9 +17,10 @@ namespace Act {
             });
         }
 
-        public void Init(int id, Sprite sprite) {
+        public void Init(int id, Sprite sprite, int count) {
             this.id = id;
             image.sprite = sprite;
+            this.count += count;
         }
     }
 }

@@ -31,6 +31,47 @@ namespace Act {
         }
 
         // 
+        public static void PickLootTick(GameContext ctx, RoleEntity owner) {
+
+            Vector3 pos = owner.Get_Pos();
+            float radius = owner.searchRange;
+            float nearlyDistance = radius * radius;
+            LootEntity nearlyLoot = null;
+
+            int lootLen = ctx.lootRepo.TakeAll(out var loots);
+            for (int i = 0; i < lootLen; i++) {
+                var loot = loots[i];
+
+                // 判定loot是否在搜索范围内
+                bool isInRange = PFMath.IsInRange(loot.GetPos(), pos, radius, out var distance);
+                if (isInRange) {
+
+                    // 在范围内显示采集信号
+                    UIApp.Panel_LootSignal_Open(ctx.uICtx, loot.id, loot.lootName, loot.GetPos());
+                    if (distance <= nearlyDistance) {
+                        nearlyDistance = distance;
+                    }
+                    nearlyLoot = loot;
+
+                } else {
+                    // 不在范围内隐藏采集信号
+                    UIApp.Panel_LootSignal_Hide(ctx.uICtx, loot.id);
+                }
+            }
+
+            if (nearlyLoot != null) {
+                Debug.Log("in");
+                if (Input.GetKey(KeyCode.E)) {
+                    // 生成Stuff，添加进RoleStuffComponent
+                    var stuff = GameFactory.CreateStuffModel(ctx, nearlyLoot.typeID, nearlyLoot.stuffCount);
+                    owner.stuffCom.IsAdd(stuff, stuff.count, out int overCount);
+                    // 销毁loot，Panel_LootSignal
+                    ctx.lootRepo.Remove(nearlyLoot);
+                    nearlyLoot.Destroy();
+                    UIApp.Panel_LootSignal_Close(ctx.uICtx, nearlyLoot.id);
+                }
+            }
+        }
 
 
     }
