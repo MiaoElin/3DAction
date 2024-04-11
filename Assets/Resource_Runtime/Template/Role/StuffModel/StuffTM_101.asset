@@ -15,6 +15,7 @@ MonoBehaviour:
   typeID: 101
   stuffName: "\u9EC4\u6C34\u4ED9"
   sprite: {fileID: 21300000, guid: b94cfcfedac455544adaae1959aff8b8, type: 3}
+  maxCount: 10
   isReHp: 1
   reHp: 1
   isReVIT: 1

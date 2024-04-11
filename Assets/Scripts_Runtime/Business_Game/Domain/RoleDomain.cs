@@ -31,7 +31,7 @@ namespace Act {
         }
 
         // 
-        public static void PickLootTick(GameContext ctx, RoleEntity owner) {
+        public static void PickNearlyLoot(GameContext ctx, RoleEntity owner) {
 
             Vector3 pos = owner.Get_Pos();
             float radius = owner.searchRange;
@@ -58,17 +58,32 @@ namespace Act {
                     UIApp.Panel_LootSignal_Hide(ctx.uICtx, loot.id);
                 }
             }
+            PickStuff(ctx, owner, nearlyLoot);
 
+        }
+
+        public static void PickStuff(GameContext ctx, RoleEntity owner, LootEntity nearlyLoot) {
             if (nearlyLoot != null) {
-                Debug.Log("in");
-                if (Input.GetKey(KeyCode.E)) {
-                    // 生成Stuff，添加进RoleStuffComponent
+                owner.isAllowPick = true;
+                if (Input.GetKeyDown(KeyCode.E)) {
+                    owner.isAllowPick = false;
+                    Debug.Log("in");
+                    // 生成Stuff，添加进RoleStuffComponent、
+                    //==== todo === 生成多个的情况待解决 ， 生成一个stuff数组；
                     var stuff = GameFactory.CreateStuffModel(ctx, nearlyLoot.typeID, nearlyLoot.stuffCount);
-                    owner.stuffCom.IsAdd(stuff, stuff.count, out int overCount);
-                    // 销毁loot，Panel_LootSignal
-                    ctx.lootRepo.Remove(nearlyLoot);
-                    nearlyLoot.Destroy();
-                    UIApp.Panel_LootSignal_Close(ctx.uICtx, nearlyLoot.id);
+                    bool allpick = owner.stuffCom.IsAdd(stuff, stuff.count, out int overCount);
+                    if (allpick) {
+                        // 销毁loot，Panel_LootSignal
+                        ctx.lootRepo.Remove(nearlyLoot);
+                        nearlyLoot.Destroy();
+                        UIApp.Panel_LootSignal_Close(ctx.uICtx, nearlyLoot.id);
+                    } else {
+                        Debug.Log("背包满了");
+                        if (overCount < stuff.count) {
+                            // 装了一点进去了
+                            // todo 修改loot的stuffcount；
+                        }
+                    }
                 }
             }
         }

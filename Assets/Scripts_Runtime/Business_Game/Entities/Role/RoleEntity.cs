@@ -36,6 +36,7 @@ namespace Act {
         int jumpTimes;
 
         public StuffComponent stuffCom;
+        public bool isAllowPick;
         public RoleEntity() {
             stuffCom = new StuffComponent();
         }

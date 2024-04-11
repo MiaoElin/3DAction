@@ -46,7 +46,7 @@ namespace Act {
             ctx.cameraEntity.Tick(ctx.inputEntity.mouseWheel, fixdt);
 
             // Pick loot
-            RoleDomain.PickLootTick(ctx, owner);
+            RoleDomain.PickNearlyLoot(ctx, owner);
         }
 
         public static void LateTcik(GameContext ctx, float dt) {
@@ -66,6 +66,8 @@ namespace Act {
             ctx.cameraEntity.isCamera_HorizonalRound = ctx.inputEntity.isCamera_HorizonalRound;
 
             ctx.cameraEntity.FollowSet(owner, ctx.inputEntity.MouseAxis, dt);
+
+            owner.isAllowPick = ctx.inputEntity.isAllowPick;
         }
     }
 

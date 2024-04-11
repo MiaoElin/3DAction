@@ -6,6 +6,9 @@ namespace Act {
         // roleInput
         public bool isJumpKeyDown;
         public Vector3 moveAxis;
+        public bool isAllowPick;
+
+
         public Vector3 mouseScreenPos;
         public Vector3 mouseWorldPos;
         public float mouseWheel;
@@ -93,6 +96,9 @@ namespace Act {
             } else {
                 isJumpKeyDown = false;
             };
+
+            // isAllowPick
+            // if(inputKeyd)
         }
 
         public bool IsKeyPress(InputKey key) {

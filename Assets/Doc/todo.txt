@@ -17,6 +17,9 @@
 - 开个项目学习 做动画和特效的几种方式
 - 3D投影到2D平台的算法称为“MVP投影算法”
 
+// 生成Stuff，添加进RoleStuffComponent、
+ //==== todo === 生成多个的情况待解决 ， 生成一个stuff数组；
+
 ==== 3C ====
 Controller 输入控制
 - 键盘
