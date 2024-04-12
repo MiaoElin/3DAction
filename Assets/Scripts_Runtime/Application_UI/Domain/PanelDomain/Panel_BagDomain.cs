@@ -7,15 +7,29 @@ namespace Act {
                 panel = UIFactory.UI_Create<Panel_Bag>(ctx);
                 panel.Ctor();
             }
-            panel.Init();
+            stuffCom.Foreach((stuff) => {
+                if (stuff != null) {
+                    panel.Init(stuff.index, stuff.id, stuff.sprite, stuff.count);
+                }
+            });
             panel.Show();
+        }
+
+        public static void Init(UIContext ctx, StuffComponent stuffCom) {
+            var panel = ctx.openedUI_TryGet<Panel_Bag>();
+            if (panel == null) {
+                return;
+            }
+            stuffCom.Foreach((stuff) => {
+                if (stuff != null) {
+                    panel.Init(stuff.index, stuff.id, stuff.sprite, stuff.count);
+                }
+            });
         }
 
         public static void Hide(UIContext ctx) {
             var panel = ctx.openedUI_TryGet<Panel_Bag>();
             panel?.Hide();
         }
-
-
     }
 }

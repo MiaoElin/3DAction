@@ -22,10 +22,12 @@ namespace Act {
             for (int i = 0; i < all.Length; i++) {
                 var old = all[i];
                 if (old != null && old.typeID == stuff.typeID) {
+                    // 一样的直接修改old的id，新的stuff的id会消失
                     int allowCount = old.maxCount - old.count;
                     if (allowCount >= count) {
                         // 允许装的数量大于要装的
                         old.count += count;
+                        stuff.index = i;
                         overCount = 0;
                         return true;
                     } else {
@@ -52,6 +54,7 @@ namespace Act {
                     all[index] = stuff;
                     stuff.count = count;
                     overCount = 0;
+                    stuff.index = index;
                     return true;
                 }
 

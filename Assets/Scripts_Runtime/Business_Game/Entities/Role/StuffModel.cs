@@ -1,11 +1,12 @@
 using UnityEngine;
 
 namespace Act {
-    
+
     public class StuffModel {
 
         public int id;
         public int typeID;
+        public int index;
         public Sprite sprite;
         public int count;
         public int maxCount;

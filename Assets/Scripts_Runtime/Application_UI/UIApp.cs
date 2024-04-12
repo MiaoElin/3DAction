@@ -69,6 +69,10 @@ namespace Act {
             Panel_BagDomain.Open(ctx, stuffCom);
         }
 
+        public static void Panle_Bag_Init(UIContext ctx, StuffComponent stuffCom) {
+            Panel_BagDomain.Init(ctx, stuffCom);
+        }
+
         internal static void Panel_Bag_Hide(UIContext ctx) {
             Panel_BagDomain.Hide(ctx);
         }

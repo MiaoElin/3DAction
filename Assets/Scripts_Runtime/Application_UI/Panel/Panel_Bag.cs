@@ -29,8 +29,13 @@ namespace Act {
             }
         }
 
-        public void Init() {
-
+        public void Init(int index,int stuffID, Sprite sprite, int count) {
+            for (int i = 0; i < elementsCount; i++) {
+                if (index == i) {
+                    var ele = elements[i];
+                    ele.Init(stuffID, sprite, count);
+                }
+            }
         }
 
         public void Add() {

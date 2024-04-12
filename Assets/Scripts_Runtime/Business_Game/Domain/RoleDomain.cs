@@ -71,10 +71,16 @@ namespace Act {
                     var stuff = GameFactory.CreateStuffModel(ctx, nearlyLoot.typeID, nearlyLoot.stuffCount);
                     bool allpick = owner.stuffCom.IsAdd(stuff, stuff.count, out int overCount);
                     if (allpick) {
+
                         // 销毁loot，Panel_LootSignal
                         ctx.lootRepo.Remove(nearlyLoot);
                         nearlyLoot.Destroy();
+
+                        // 销毁Panel_LootSignal
                         UIApp.Panel_LootSignal_Close(ctx.uICtx, nearlyLoot.id);
+
+                        // 更新背包
+                        UIApp.Panle_Bag_Init(ctx.uICtx,owner.stuffCom);
                     } else {
                         Debug.Log("背包满了");
                         if (overCount < stuff.count) {
