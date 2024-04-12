@@ -11,6 +11,7 @@ namespace Act {
         [SerializeField] GameObject prefab;
         List<Panel_BagElement> elements;
         Action<int> OnUseHandle;
+
         int elementsCount;
 
         public Panel_Bag() {
@@ -35,6 +36,15 @@ namespace Act {
         public void Add() {
 
         }
+
+        internal void Show() {
+            gameObject.SetActive(true);
+        }
+
+        internal void Hide() {
+            gameObject.SetActive(false);
+        }
+
 
     }
 }

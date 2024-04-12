@@ -68,6 +68,17 @@ namespace Act {
             ctx.cameraEntity.FollowSet(owner, ctx.inputEntity.MouseAxis, dt);
 
             owner.isAllowPick = ctx.inputEntity.isAllowPick;
+            owner.openBag = ctx.inputEntity.OpenBag;
+
+            if (owner.openBag && !owner.isOpened) {
+                UIApp.Panel_Bag_Open(ctx.uICtx, owner.stuffCom);
+                owner.isOpened = true;
+                owner.openBag = false;
+            }
+            if (owner.isOpened && owner.openBag) {
+                UIApp.Panel_Bag_Hide(ctx.uICtx);
+                owner.isOpened = false;
+            }
         }
     }
 

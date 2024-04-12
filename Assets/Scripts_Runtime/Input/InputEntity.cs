@@ -7,6 +7,7 @@ namespace Act {
         public bool isJumpKeyDown;
         public Vector3 moveAxis;
         public bool isAllowPick;
+        public bool OpenBag;
 
 
         public Vector3 mouseScreenPos;
@@ -98,7 +99,18 @@ namespace Act {
             };
 
             // isAllowPick
-            // if(inputKeyd)
+            if (Input.GetKeyDown(KeyCode.E)) {
+                isAllowPick = true;
+            } else {
+                isAllowPick = false;
+            }
+
+            // isOpenBag
+            if (Input.GetKeyDown(KeyCode.B)) {
+                OpenBag = true;
+            } else {
+                OpenBag = false;
+            }
         }
 
         public bool IsKeyPress(InputKey key) {

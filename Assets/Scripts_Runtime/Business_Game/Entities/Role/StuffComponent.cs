@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections.Generic;
 
 namespace Act {
@@ -57,10 +58,16 @@ namespace Act {
                 // 没空格子
                 overCount = count;
                 return false;
-                
+
             } else {
                 overCount = 0;
                 return false;
+            }
+        }
+
+        public void Foreach(Action<StuffModel> action) {
+            foreach (var stuff in all) {
+                action.Invoke(stuff);
             }
         }
     }

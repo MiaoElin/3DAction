@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Act {
 
-    public class Panel_BagElement {
+    public class Panel_BagElement : MonoBehaviour {
         public int id;
         public int count;
         [SerializeField] Image image;

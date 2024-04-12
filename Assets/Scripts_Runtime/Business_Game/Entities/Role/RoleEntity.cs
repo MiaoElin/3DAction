@@ -37,6 +37,9 @@ namespace Act {
 
         public StuffComponent stuffCom;
         public bool isAllowPick;
+
+        public bool openBag;
+        public bool isOpened;
         public RoleEntity() {
             stuffCom = new StuffComponent();
         }

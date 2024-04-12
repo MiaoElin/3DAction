@@ -59,9 +59,18 @@ namespace Act {
         public static void Panel_LootSignal_Hide(UIContext ctx, int id) {
             Panel_LootSignalDomain.Hide(ctx, id);
         }
-        
+
         public static void Panel_LootSignal_Close(UIContext ctx, int id) {
             Panel_LootSignalDomain.Close(ctx, id);
+        }
+
+        // Panel_Bag
+        public static void Panel_Bag_Open(UIContext ctx, StuffComponent stuffCom) {
+            Panel_BagDomain.Open(ctx, stuffCom);
+        }
+
+        internal static void Panel_Bag_Hide(UIContext ctx) {
+            Panel_BagDomain.Hide(ctx);
         }
     }
 }
