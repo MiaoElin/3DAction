@@ -348,6 +348,7 @@ MonoBehaviour:
   btn_Exit: {fileID: 6609849238139990796}
   videoPlayer: {fileID: 629601318510400664}
   rawImage: {fileID: 4401964514643882565}
+  bgmClip: {fileID: 8300000, guid: 136e07c0e96ef084d86ba99403077ee9, type: 3}
 --- !u!1 &7472647287183350590
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 301ba704e10e1c74eae6d6c7051c549a, type: 2}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -745,7 +746,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8304567517667090635}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: b3fb9699485a74b4fa33c60c7316a00b, type: 3}
+  m_VideoClip: {fileID: 0}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}

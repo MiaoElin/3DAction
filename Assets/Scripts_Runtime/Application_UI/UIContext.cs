@@ -14,6 +14,7 @@ namespace Act {
         public UIEventCenter uIEvent;
         public Canvas screenCanvas;
         public Canvas worldCanvas;
+        public SoundCoreContext soundCtx;
         public AsyncOperationHandle uiPtr;
 
         public UIContext() {
@@ -23,9 +24,10 @@ namespace Act {
             hpBarDic = new Dictionary<int, HUD_HpBar>();
             lootSignalDic = new Dictionary<int, Panel_LootSignal>();
         }
-        public void Inject(Canvas screenCanvas, Canvas worldCanvas) {
+        public void Inject(Canvas screenCanvas, Canvas worldCanvas,SoundCoreContext soundCtx) {
             this.screenCanvas = screenCanvas;
             this.worldCanvas = worldCanvas;
+            this.soundCtx=soundCtx;
         }
 
         // UI

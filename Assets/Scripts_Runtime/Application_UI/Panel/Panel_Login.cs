@@ -18,6 +18,7 @@ namespace Act.UI {
         public Action OnExitHandle;
         [SerializeField] VideoPlayer videoPlayer;
         [SerializeField] RawImage rawImage;
+        [SerializeField] public  AudioClip bgmClip;
         public void Ctor() {
             btn_Start.onClick.AddListener(() => {
                 OnStartHandle.Invoke();
@@ -28,10 +29,10 @@ namespace Act.UI {
         }
 
         public void VideoPlay_Tick() {
-            Texture tex = videoPlayer.texture;
-            if (tex != null) {
-                rawImage.texture = tex;
-            }
+            // Texture tex = videoPlayer.texture;
+            // if (tex != null) {
+            //     rawImage.texture = tex;
+            // }
             videoPlayer.Play();
         }
     }

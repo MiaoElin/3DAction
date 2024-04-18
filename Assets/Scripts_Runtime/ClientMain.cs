@@ -30,29 +30,30 @@ namespace Act {
 
             // Iint
             ctx.inputEntity.Init();
-            LoginBusiness.Enter(ctx.uICtx);
+            LoginBusiness.Enter(ctx.loginCtx);
         }
 
         private void Load() {
 
-            UIApp.LoadAll(ctx.uICtx);
-            InfraTemplate.LoadAll(ctx.tempCtx);
-            InfraAsset.LoadAll(ctx.infraCtx);
+            UIApp.LoadAll(ctx.uiCtx);
+            TemplateCore.LoadAll(ctx.tempCtx);
+            AssetCore.LoadAll(ctx.assetCtx);
+            SoundCore.Load(ctx.soundCtx);
         }
 
         private void BindEvent() {
 
-            var uIEvent = ctx.uICtx.uIEvent;
+            var uIEvent = ctx.uiCtx.uIEvent;
 
             // Login
             uIEvent.Login_OnStarGame += () => {
-                LoginBusiness.Close(ctx.uICtx);
+                LoginBusiness.Close(ctx.loginCtx);
                 // 进入游戏
                 GameBusiness.EnterGame(ctx.gameCtx);
             };
             uIEvent.Login_OnExitGame += () => {
                 // 退出游戏
-                LoginBusiness.ExitGame(ctx.uICtx);
+                LoginBusiness.ExitGame(ctx.loginCtx);
             };
 
 
@@ -67,7 +68,7 @@ namespace Act {
             float dt = Time.deltaTime;
 
             // Tick
-            LoginBusiness.Tick(ctx.uICtx);
+            LoginBusiness.Tick(ctx.loginCtx);
             GameBusiness.Tick(ctx.gameCtx, dt);
 
             // FixedTick
@@ -125,9 +126,9 @@ namespace Act {
         }
 
         private void Unload() {
-            InfraAsset.Unload(ctx.infraCtx);
-            UIApp.Unload(ctx.uICtx);
-            InfraTemplate.Unload(ctx.tempCtx);
+            AssetCore.Unload(ctx.assetCtx);
+            UIApp.Unload(ctx.uiCtx);
+            TemplateCore.Unload(ctx.tempCtx);
         }
 
     }

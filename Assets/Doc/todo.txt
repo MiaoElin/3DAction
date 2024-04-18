@@ -16,6 +16,8 @@
 - 问题：动画Layer是干嘛用的 :layar 是有Sprite render 上的layer决定的
 - 开个项目学习 做动画和特效的几种方式
 - 3D投影到2D平台的算法称为“MVP投影算法”
+- 学习音效怎么做（用协程的方式）
+- 根据距离控制音效的音量
 
 // 生成Stuff，添加进RoleStuffComponent、
  //==== todo === 生成多个的情况待解决 ， 生成一个stuff数组；

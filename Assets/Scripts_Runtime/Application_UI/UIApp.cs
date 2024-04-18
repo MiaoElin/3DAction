@@ -25,6 +25,8 @@ namespace Act {
             panel.Ctor();
             panel.OnStartHandle += () => {/* 进入游戏 */ctx.uIEvent.Login_StarGame(); };
             panel.OnExitHandle += () => {/* 退出游戏程序 */ ctx.uIEvent.Login_ExitGame(); };
+
+            SoundCore.BGMPlay(ctx.soundCtx, panel.bgmClip);
         }
         public static void Panel_Login_Close(UIContext ctx) {
             var name = typeof(Panel_Login).Name;

@@ -13,6 +13,10 @@ namespace Act {
                 }
             });
             panel.Show();
+
+
+            SoundCore.OpenBagPlayer(ctx.soundCtx, panel.clip);
+
         }
 
         public static void Init(UIContext ctx, StuffComponent stuffCom) {
@@ -30,6 +34,8 @@ namespace Act {
         public static void Hide(UIContext ctx) {
             var panel = ctx.openedUI_TryGet<Panel_Bag>();
             panel?.Hide();
+
+            SoundCore.OpenBagPlayer(ctx.soundCtx, panel.clip);
         }
     }
 }

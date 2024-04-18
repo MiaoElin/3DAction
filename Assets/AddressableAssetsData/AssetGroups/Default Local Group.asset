@@ -35,6 +35,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - StuffTM
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af461f6d4fad42e41915f9a64d7b679e
+    m_Address: AudioSource
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: caf1cc206c16af04597d10f8bdd112f0, type: 2}
   m_SchemaSet:

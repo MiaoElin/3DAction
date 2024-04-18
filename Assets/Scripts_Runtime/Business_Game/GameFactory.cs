@@ -6,7 +6,7 @@ namespace Act {
             if (!has) {
                 Debug.Log($"Factory.CreateRole:{typeID} not found");
             }
-            ctx.infraCtx.Entity_Tryget(typeof(RoleEntity).Name, out GameObject prefab);
+            ctx.assetCtx.Entity_Tryget(typeof(RoleEntity).Name, out GameObject prefab);
             var role = GameObject.Instantiate(prefab).GetComponent<RoleEntity>();
             role.Ctor();
             role.Set_Pos(pos);
@@ -26,7 +26,7 @@ namespace Act {
             if (!has) {
                 Debug.Log($"Factory.CreateLoot:{typeID} not found");
             }
-            ctx.infraCtx.Entity_Tryget(typeof(LootEntity).Name, out GameObject prefab);
+            ctx.assetCtx.Entity_Tryget(typeof(LootEntity).Name, out GameObject prefab);
             var loot = GameObject.Instantiate(prefab).GetComponent<LootEntity>();
             loot.Ctor();
             loot.SetPos(pos);

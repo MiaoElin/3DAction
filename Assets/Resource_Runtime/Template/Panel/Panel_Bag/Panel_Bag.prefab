@@ -129,6 +129,7 @@ MonoBehaviour:
   title: {fileID: 0}
   elementGroup: {fileID: 3506441799015165387}
   prefab: {fileID: 5754486361558457543, guid: 32cb353233ca6b14094ff8c9e3ac3576, type: 3}
+  clip: {fileID: 8300000, guid: 51e9205cbfc5f7440b8f731ecccf0dfc, type: 3}
 --- !u!1 &5218328106638770022
 GameObject:
   m_ObjectHideFlags: 0

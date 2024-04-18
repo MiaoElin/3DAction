@@ -19,12 +19,17 @@ namespace Act {
 
         public void Init(int id, Sprite sprite, int count) {
             this.id = id;
-            // 不是空格才替换图片
+            
+            // 有东西才替换图片
             if (id != -1) {
                 image.sprite = sprite;
             }
             this.count += count;
-            btn.GetComponentInChildren<Text>().text = $"X{count}";
+
+            // 有东西才显示数量
+            if (count != 0) {
+                btn.GetComponentInChildren<Text>().text = $"X{count}";
+            }
         }
     }
 }

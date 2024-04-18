@@ -3,7 +3,7 @@ namespace Act {
     public class GameContext {
         // === Context ===
         public TemplateContext tempCtx;
-        public InfraAssetContext infraCtx;
+        public AssetContext assetCtx;
         public UIContext uICtx;
 
         public IDService iDService;
@@ -26,10 +26,10 @@ namespace Act {
             cameraEntity = new CameraEntity();
             playerEntity = new PlayerEntity();
         }
-        public void Inject(inputEntity inputEntity, TemplateContext tempCtx, InfraAssetContext infraCtx, UIContext uICtx, Camera camera) {
+        public void Inject(inputEntity inputEntity, TemplateContext tempCtx, AssetContext assetCtx, UIContext uICtx, Camera camera) {
             this.inputEntity = inputEntity;
             this.tempCtx = tempCtx;
-            this.infraCtx = infraCtx;
+            this.assetCtx = assetCtx;
             this.uICtx = uICtx;
             cameraEntity.camera = camera;
             cameraEntity.Ctor();

@@ -65,7 +65,6 @@ namespace Act {
         public static void PickStuff(GameContext ctx, RoleEntity owner, LootEntity nearlyLoot) {
             if (nearlyLoot != null) {
                 if (owner.isAllowPick) {
-                    Debug.Log("in");
                     // 生成Stuff，添加进RoleStuffComponent、
                     //==== todo === 生成多个的情况待解决 ， 生成一个stuff数组；
                     var stuff = GameFactory.CreateStuffModel(ctx, nearlyLoot.typeID, nearlyLoot.stuffCount);

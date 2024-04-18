@@ -11,6 +11,7 @@ namespace Act {
         [SerializeField] GameObject prefab;
         List<Panel_BagElement> elements;
         Action<int> OnUseHandle;
+        [SerializeField] public AudioClip clip;
 
         int elementsCount;
 
@@ -29,7 +30,7 @@ namespace Act {
             }
         }
 
-        public void Init(int index,int stuffID, Sprite sprite, int count) {
+        public void Init(int index, int stuffID, Sprite sprite, int count) {
             for (int i = 0; i < elementsCount; i++) {
                 if (index == i) {
                     var ele = elements[i];

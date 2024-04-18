@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27640adae64e91540ab6887ff214ba75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeId: 0
+  typeID: 0
   lootName: 
   id: 0
+  stuffCount: 0
   mr: {fileID: 2424530674589195661}
   meshFilter: {fileID: 1752975733214729910}
 --- !u!23 &2424530674589195661
