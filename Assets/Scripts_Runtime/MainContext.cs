@@ -20,7 +20,7 @@ namespace Act {
         }
         public void Inject(Canvas screenCanvas, Canvas worldCanvas, Camera camera) {
             uiCtx.Inject(screenCanvas, worldCanvas, soundCtx);
-            gameCtx.Inject(inputEntity, tempCtx, assetCtx, uiCtx, camera);
+            gameCtx.Inject(inputEntity, tempCtx, assetCtx, uiCtx, camera,soundCtx);
             loginCtx.Inject(uiCtx, soundCtx);
         }
     }

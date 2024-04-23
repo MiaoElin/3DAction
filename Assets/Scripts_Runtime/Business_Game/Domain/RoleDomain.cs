@@ -12,6 +12,13 @@ namespace Act {
             if (role.moveType == moveType.ByInput) {
                 Vector3 dir = ctx.inputEntity.moveAxis;
                 role.Move(dir, dt);
+                // 音效
+                ctx.tempCtx.RoleTM_Tryget(role.typeID, out var tm);
+                if (dir != Vector3.zero) {
+                    SoundCore.RoleRunPlayer(ctx.soundCtx, tm.moveClip);
+                } else {
+                    SoundCore.RoleRunStop(ctx.soundCtx, tm.moveClip);
+                }
             }
         }
         public static void Falling(RoleEntity role, float dt) {
@@ -65,6 +72,8 @@ namespace Act {
         public static void PickStuff(GameContext ctx, RoleEntity owner, LootEntity nearlyLoot) {
             if (nearlyLoot != null) {
                 if (owner.isAllowPick) {
+                    ctx.tempCtx.RoleTM_Tryget(owner.typeID, out var tm);
+                    SoundCore.PickPlayer(ctx.soundCtx, tm.pickClip);
                     // 生成Stuff，添加进RoleStuffComponent、
                     //==== todo === 生成多个的情况待解决 ， 生成一个stuff数组；
                     var stuff = GameFactory.CreateStuffModel(ctx, nearlyLoot.typeID, nearlyLoot.stuffCount);
@@ -79,7 +88,7 @@ namespace Act {
                         UIApp.Panel_LootSignal_Close(ctx.uICtx, nearlyLoot.id);
 
                         // 更新背包
-                        UIApp.Panle_Bag_Init(ctx.uICtx,owner.stuffCom);
+                        UIApp.Panle_Bag_Init(ctx.uICtx, owner.stuffCom);
                     } else {
                         Debug.Log("背包满了");
                         if (overCount < stuff.count) {

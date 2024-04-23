@@ -7,7 +7,8 @@ namespace Act {
         public int hpMax;
         public moveType moveType;
         public float searchRange;
-
+        public AudioClip pickClip;
+        public AudioClip moveClip;
     }
 
 }
