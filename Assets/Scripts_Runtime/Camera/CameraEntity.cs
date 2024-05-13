@@ -57,7 +57,7 @@ namespace Act {
             mouseAxis = mouseAxis * dt;
             mouseAxis *= 1000;
             mouseAxis.y *= -1;
-            var rotation = camera.transform.localEulerAngles;
+            var rotation = camera.transform.eulerAngles;
             if (rotation.x >= 270 && rotation.x <= 360) {
                 rotation.x = rotation.x - 360;
             }
