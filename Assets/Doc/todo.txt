@@ -16,7 +16,7 @@
 - 问题：动画Layer是干嘛用的 :layar 是有Sprite render 上的layer决定的
 - 开个项目学习 做动画和特效的几种方式
 - 3D投影到2D平台的算法称为“MVP投影算法”
-- 学习音效怎么做（用协程的方式）
+
 - 根据距离控制音效的音量
 
 // 生成Stuff，添加进RoleStuffComponent、
@@ -44,7 +44,7 @@ Camera 相机
 ==== UI ====
 - 屏幕空间
  - Panel_Login
-   - 添加一段视频做背景
+ √  - 添加一段视频做背景
  - panel_Setting  
 - 世界空间
 

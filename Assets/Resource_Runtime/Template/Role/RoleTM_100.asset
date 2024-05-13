@@ -17,3 +17,5 @@ MonoBehaviour:
   hpMax: 20
   moveType: 2
   searchRange: 2
+  pickClip: {fileID: 8300000, guid: d70bce8e592490d47b0ca7a46c4c0d52, type: 3}
+  moveClip: {fileID: 8300000, guid: bcf4ec5a25966fd4183459d5c524b375, type: 3}

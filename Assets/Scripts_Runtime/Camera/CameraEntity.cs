@@ -57,24 +57,31 @@ namespace Act {
             mouseAxis = mouseAxis * dt;
             mouseAxis *= 1000;
             mouseAxis.y *= -1;
-            var rotation = camera.transform.eulerAngles;
+            var rotation = camera.transform.localEulerAngles;
+            if (rotation.x >= 270 && rotation.x <= 360) {
+                rotation.x = rotation.x - 360;
+            }
+            float angelX = rotation.x + mouseAxis.y;
+            float angelY = rotation.y + mouseAxis.x;
             // 0 < rotation.x + mouseAxis.y < 90
             // 0 < rotation.y + mouseAxis.x < 360
             // mouseAxis.x = Mathf.Clamp(mouseAxis.x, -rotation.y, 360 - rotation.y);
             // mouseAxis.y = Mathf.Clamp(mouseAxis.y, -rotation.x,90-rotation.y);
             var dir = (cameraPos - targetPos).normalized;
-            if (mouseAxis.y > -rotation.x && mouseAxis.y < 90 - rotation.x && mouseAxis.y != 0) {
+            Debug.Log(rotation);
+            if (angelX > -30 && angelX < 60) {
                 Quaternion yRot = Quaternion.AngleAxis(mouseAxis.y, camera.transform.right);
                 dir = yRot * dir;
             }
             Quaternion xRot = Quaternion.AngleAxis(mouseAxis.x, Vector3.up);
             dir = xRot * dir;
             dir *= distance;
+
             offset = dir;
 
             // Sine Wave
             // Phase 相位
-            // float phase = 1;
+            // float phase = 1;a
             // Amplitude 振幅
             // float amplitude = 0.2f;
             // Frequency 振频
@@ -82,9 +89,9 @@ namespace Act {
             // float sine = phase + Mathf.Sin(Time.time * frequency) * amplitude;
             // Vector3 shake = sine * Vector3.up;
 
-            camera.transform.forward = -offset.normalized;
             cameraPos = owner.Get_Pos() + offset;
             camera.transform.position = cameraPos;
+            camera.transform.forward = targetPos + Vector3.up * 2f - cameraPos;
         }
 
         public Vector3 GetForward() {

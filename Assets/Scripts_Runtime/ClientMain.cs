@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Act {
+
     public class ClientMain : MonoBehaviour {
+
         [SerializeField] Camera mainCamera;
         [SerializeField] Canvas screenCanvas;
         [SerializeField] Canvas worldCanvas;
@@ -15,6 +17,21 @@ namespace Act {
         // Start is called before the first frame update
         void Start() {
 
+            // 连接器
+            // Fortran
+            // Basic
+            // C
+            // Unix -> Linux(Linus) Git
+            // MS Apple
+            // func(obj), `Small Talk`: class obj.func()
+            // C with classes gcc -> C++ (g++)
+            // Oracle -> Java(GC)
+            // J++ Oracle
+
+            Vector2 po1 = new Vector2(14.28f, 8.04f);
+            Vector2 po2 = new Vector2(14, 5.53f);
+            Debug.Log(Vector2.SqrMagnitude(po2 - po1));
+
             isTearDown = false;
 
             ctx = new MainContext();
@@ -24,7 +41,6 @@ namespace Act {
 
             // Binding
             BindEvent();
-
             // Load
             Load();
 
@@ -33,15 +49,17 @@ namespace Act {
             LoginBusiness.Enter(ctx.loginCtx);
         }
 
+        // 0x10
         private void Load() {
 
-            UIApp.LoadAll(ctx.uiCtx);
-            TemplateCore.LoadAll(ctx.tempCtx);
-            AssetCore.LoadAll(ctx.assetCtx);
-            SoundCore.Load(ctx.soundCtx);
+            UIApp.LoadAll(ctx.uiCtx); // 0x10 + 0x00
+            TemplateCore.LoadAll(ctx.tempCtx); // 0x10 + 0x08
+            AssetCore.LoadAll(ctx.assetCtx); // x16
+            SoundCore.Load(ctx.soundCtx); // x24
+
         }
 
-        private void BindEvent() {
+        void BindEvent() {
 
             var uIEvent = ctx.uiCtx.uIEvent;
 
@@ -51,12 +69,18 @@ namespace Act {
                 // 进入游戏
                 GameBusiness.EnterGame(ctx.gameCtx);
             };
+
             uIEvent.Login_OnExitGame += () => {
                 // 退出游戏
                 LoginBusiness.ExitGame(ctx.loginCtx);
             };
 
+        }
 
+        static void AnyFunc(ClientMain main) {
+            LoginBusiness.Close(main.ctx.loginCtx);
+            // 进入游戏
+            GameBusiness.EnterGame(main.ctx.gameCtx);
         }
 
         // Update is called once per frame
